@@ -1,1 +1,3 @@
-<p>player works!</p>
+<!-- component responsible for playing current song
+logic for retrieving next song and playing it -->
+<iframe *ngIf="videoID" width="560" height="315" [src]="videoString + videoID + autoPlay | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
