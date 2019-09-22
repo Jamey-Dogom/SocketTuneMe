@@ -1,29 +1,24 @@
 const mongoose = require('mongoose');
-// Dog = mongoose.model('Show')
+const PlaylistController = require('./../controllers/playlists');
+const SongController = require('./../controllers/songs');
 
-const playlists = require('../controllers/playlists');
 
 module.exports = function(app) {
 
-// // // Get all shows
-//     app.get('/shows', shows.findAll)
-//
-// // Create a show
-//     app.post('/shows', shows.create);
-//
-// // Find a show by id
-//     app.get('/shows/:id', shows.findOne);
-//
-// // Update a show
-//     app.put('/shows/:id/', shows.edit);
-//
-// // Delete a show
-//     app.delete('/shows/:id', shows.delete);
-//
-//
-// ////////////
-//
-//     app.post('/shows/:id/rates', shows.rateCreate);
+    app.post('/api/playlist', PlaylistController.create);
 
+    app.get('/api/playlist/:id', PlaylistController.getOne);
+
+    app.delete('/api/playlist/:id', PlaylistController.delete);
+
+    app.get('/api/songs', SongController.index);
+    
+    app.post('/api/songs', SongController.create);
+
+    app.delete('/api/songs/:id', SongController.delete);
+
+    app.put('/api/songs/:id', SongController.update);
+
+    app.get('/api/songs/:id', SongController.getOne);
 
 };
