@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 
 mongoose.connect('mongodb://localhost/playlists_db', {
-    useNewUrlParser: true, useUnifiedTopology: true
+    useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false
 });
 
 // create a variable that points to the models folder
