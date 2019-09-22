@@ -12,17 +12,18 @@
 
 <body>
   <div class="container">
+    <p *ngIf="userIP" >{{ userIP }}</p>
     <h2>SocketTuneMe🎵</h2>
     <!--  music player component -->
     <app-player *ngIf="SongId" [videoID]="SongId"></app-player>
     <div class="insert">
-        <h3>Search for that next 🔥 track</h3>
-        <form #form action="http://www.youtube.com/results" method="get" target="_blank" >
-          <div class="form-group">
-              <input class="form-control music-insert" name="search_query" type="text" maxlength="128" />
-          </div>
-          <button type="submit" class="btn btn-success mgb" (click)="form.submit()">Find</button>
-          </form>
+      <h3>Search for that next 🔥 track</h3>
+      <form #form action="http://www.youtube.com/results" method="get" target="_blank">
+        <div class="form-group">
+          <input class="form-control music-insert" name="search_query" type="text" maxlength="128" />
+        </div>
+        <button type="submit" class="btn btn-success mgb" (click)="form.submit()">Find</button>
+      </form>
       <h3>Insert that next 🔥 track</h3>
       <!--  form for song submission -->
       <form (submit)="onSubmit()">
@@ -36,7 +37,7 @@
     <div class="row">
       <div class="col-lg-12" *ngFor="let song of allSongs;">
         <div class="card text-white bg-dark mb-3 mvr" style="max-width: 40rem;">
-          <div class="card-header">{{song}} <span class = "font-size: 18px">👍</span> </div>
+          <div class="card-header">{{song}} <span class="font-size: 18px">👍</span> </div>
         </div>
       </div>
     </div>

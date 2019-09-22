@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+// Bringing in The Socket
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-root',
@@ -15,17 +17,28 @@ export class AppComponent implements OnInit {
   title = 'public';
   allSongs = []
   songs = false
+  userIP = null;
 
 
-  constructor(private _httpService: HttpService) {
+  constructor(
+    private _httpService: HttpService,
+    private _socket: Socket
+  ) {
     this.newSong = { id: "" }
   }
 
   ngOnInit() {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
+    this.logIn();
+    console.log(this.userIP);
   }
 
+  logIn() {
+    this._socket.on('logIn', (data) => {
+      this.userIP = data.ip.address;
+    })
+  }
   // Song Liked 
   // update the song object's like field
   //- re-sort {{allSongs}} array by # of Likes
@@ -38,7 +51,7 @@ export class AppComponent implements OnInit {
 
   onSubmit() {
     // Submission of FIRST new song
-    if(this.songs){
+    if (this.songs) {
       this.allSongs.push(this.newSong.link)
       this.newSong = { id: "" }
     }
@@ -50,7 +63,7 @@ export class AppComponent implements OnInit {
       this.newSong = { id: "" }
       this.songs = true
     }
-    
+
     // this.SongId = this.newSong.id
     // // Code to send off the form data (this.newTask) to the Service
     // console.log(this.newShow)
