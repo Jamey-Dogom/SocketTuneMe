@@ -32,7 +32,24 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+
 /* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\n<html>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n<link href=\"https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap\" rel=\"stylesheet\">\n<script src=\"https://code.jquery.com/jquery-3.4.1.js\" integrity=\"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=\"\n  crossorigin=\"anonymous\"></script>\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js\"></script>\n<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\n  integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n\n<body>\n  <div class=\"container\">\n    <p *ngIf=\"userIP\" >{{ userIP }}</p>\n    <h2>SocketTuneMe🎵</h2>\n    <!--  music player component -->\n    <app-player *ngIf=\"SongId\" [videoID]=\"SongId\"></app-player>\n    <div class=\"insert\">\n      <h3>Search for that next 🔥 track</h3>\n      <form #form action=\"http://www.youtube.com/results\" method=\"get\" target=\"_blank\">\n        <div class=\"form-group\">\n          <input class=\"form-control music-insert\" name=\"search_query\" type=\"text\" maxlength=\"128\" />\n        </div>\n        <button type=\"submit\" class=\"btn btn-success mgb\" (click)=\"form.submit()\">Find</button>\n      </form>\n      <h3>Insert that next 🔥 track</h3>\n      <!--  form for song submission -->\n      <form (submit)=\"onSubmit()\">\n        <div class=\"form-group\">\n          <input type=\"text\" class=\"form-control music-insert\" name=\"link\" placeholder=\"Fire Tracks Only\"\n            [(ngModel)]=\"newSong.link\">\n        </div>\n        <button type=\"submit\" class=\"btn btn-danger mgb\">Add</button>\n      </form>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-12\" *ngFor=\"let song of allSongs;\">\n        <div class=\"card text-white bg-dark mb-3 mvr\" style=\"max-width: 40rem;\">\n          <div class=\"card-header\">{{song}} <span class=\"font-size: 18px\">👍</span> </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</body>\n\n</html>");
+
+/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n  <title>Welcome</title>\r\n  <!-- Compiled and minified CSS -->\r\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">\r\n\r\n  <!-- Compiled and minified JavaScript -->\r\n  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>\r\n\r\n  <!-- Icons -->\r\n  <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\r\n  <!-- Format to use: <i class=\"material-icons\">add</i> -->\r\n\r\n</head>\r\n\r\n<body>\r\n  <div class=\"container row\">\r\n    <h1 class=\"center\">S<i style=\"margin-right: -2%\" class=\"small material-icons\">blur_circular</i> cket Tunes </h1>\r\n\r\n    <div class=\"row box\">\r\n      <!-- Form to start a new Party -->\r\n      <ul class=\"collapsible\">\r\n        <li>\r\n          <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>First</div>\r\n          <div class=\"collapsible-body\"><span>Lorem ipsum dolor sit amet.</span></div>\r\n        </li>\r\n      </ul>\r\n\r\n      <!-- Form to join existing Party -->\r\n      <div class=\"box col s3 right\">\r\n        <p class=\"center\">Join the socket sesh</p>\r\n      </div>\r\n    </div>\r\n\r\n\r\n  </div>\r\n  <script>\r\n    document.addEventListener('DOMContentLoaded', function () {\r\n      var elems = document.querySelectorAll('.collapsible');\r\n      var instances = M.Collapsible.init(elems);\r\n    });\r\n  </script>\r\n</body>\r\n\r\n</html>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/party/party.component.html":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/party/party.component.html ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\n<html>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n<link href=\"https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap\" rel=\"stylesheet\">\n<script src=\"https://code.jquery.com/jquery-3.4.1.js\" integrity=\"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=\"\n  crossorigin=\"anonymous\"></script>\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js\"></script>\n<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\n  integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n\n<body>\n  <div class=\"container\">\n    <p *ngIf=\"userIP\" >{{ userIP }}</p>\n    <h2>SocketTuneMe🎵</h2>\n    <!--  music player component -->\n    <app-player *ngIf=\"SongId\" [videoID]=\"SongId\"></app-player>\n    <div class=\"insert\">\n      <h3>Search for that next 🔥 track</h3>\n      <form #form action=\"http://www.youtube.com/results\" method=\"get\" target=\"_blank\">\n        <div class=\"form-group\">\n          <input class=\"form-control music-insert\" name=\"search_query\" type=\"text\" maxlength=\"128\" />\n        </div>\n        <button type=\"submit\" class=\"btn btn-success mgb\" (click)=\"form.submit()\">Find</button>\n      </form>\n      <h3>Insert that next 🔥 track</h3>\n      <!--  form for song submission -->\n      <form (submit)=\"onSubmit()\">\n        <div class=\"form-group\">\n          <input type=\"text\" class=\"form-control music-insert\" name=\"link\" placeholder=\"Fire Tracks Only\"\n            [(ngModel)]=\"newSong.link\">\n        </div>\n        <button type=\"submit\" class=\"btn btn-danger mgb\">Add</button>\n      </form>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-12\" *ngFor=\"let song of allSongs;\">\n        <div class=\"card text-white bg-dark mb-3 mvr\" style=\"max-width: 40rem;\">\n          <div class=\"card-header\">{{song}} <span class=\"font-size: 18px\">👍</span> </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</body>\n\n</html>\n");
+
 
 /***/ }),
 
@@ -291,10 +308,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _party_party_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./party/party.component */ "./src/app/party/party.component.ts");
 
 
 
-const routes = [];
+
+const routes = [
+    {
+        path: 'party/:id',
+        component: _party_party_component__WEBPACK_IMPORTED_MODULE_3__["PartyComponent"]
+    },
+];
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -317,7 +341,9 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+
 /* harmony default export */ __webpack_exports__["default"] = (".container {\n  margin-top: 5%;\n  text-align: center;\n}\n\n.insert {\n  margin-top: 3%;\n}\n\n.music-insert {\n  width: 50%;\n  margin-left: 25%;\n  text-align: center;\n  margin-bottom: 1%;\n}\n\nbody {\n  background-color: #eeeeee;\n  font-family: 'Josefin Sans', sans-serif;\n}\n\n.mgb {\n  margin-bottom: 5%;\n}\n\n.mvr {\n  margin-left: 21%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFjO0VBQ2Qsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLFVBQVU7RUFDVixnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLGlCQUFpQjtBQUNuQjs7QUFHQTtFQUNFLHlCQUF5QjtFQUN6Qix1Q0FBdUM7QUFDekM7O0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxnQkFBZ0I7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXIge1xuICBtYXJnaW4tdG9wOiA1JTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uaW5zZXJ0IHtcbiAgbWFyZ2luLXRvcDogMyU7XG59XG5cbi5tdXNpYy1pbnNlcnQge1xuICB3aWR0aDogNTAlO1xuICBtYXJnaW4tbGVmdDogMjUlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG1hcmdpbi1ib3R0b206IDElO1xufVxuXG5cbmJvZHkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWVlZWVlO1xuICBmb250LWZhbWlseTogJ0pvc2VmaW4gU2FucycsIHNhbnMtc2VyaWY7XG59XG5cbi5tZ2Ige1xuICBtYXJnaW4tYm90dG9tOiA1JTtcbn1cblxuLm12ciB7XG4gIG1hcmdpbi1sZWZ0OiAyMSU7XG59Il19 */");
+
 
 /***/ }),
 
@@ -344,54 +370,8 @@ let AppComponent = class AppComponent {
     constructor(_httpService, _socket) {
         this._httpService = _httpService;
         this._socket = _socket;
-        this.title = 'public';
-        this.allSongs = [];
-        this.songs = false;
-        this.userIP = null;
-        this.newSong = { id: "" };
     }
     ngOnInit() {
-        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-        //Add 'implements OnInit' to the class.
-        this.logIn();
-        console.log(this.userIP);
-    }
-    logIn() {
-        this._socket.on('logIn', (data) => {
-            this.userIP = data.ip.address;
-        });
-    }
-    // Song Liked 
-    // update the song object's like field
-    //- re-sort {{allSongs}} array by # of Likes
-    // Next Song
-    // method for determining when a song ends
-    // plays the next
-    onSubmit() {
-        // Submission of FIRST new song
-        if (this.songs) {
-            this.allSongs.push(this.newSong.link);
-            this.newSong = { id: "" };
-        }
-        // Submission of songs after the first
-        else {
-            var str = this.newSong.link;
-            var array = str.split(/[=&]+/);
-            this.SongId = array[1];
-            this.newSong = { id: "" };
-            this.songs = true;
-        }
-        // this.SongId = this.newSong.id
-        // // Code to send off the form data (this.newTask) to the Service
-        // console.log(this.newShow)
-        // let observable = this._httpService.addShow(this.newShow);
-        // // Reset this.newTask to a new, clean object.
-        // observable.subscribe(data => {
-        //   this.allShows = []
-        //   console.log('gottem', data)
-        //   this.newShow = { title: "", description: "" }
-        // })
-        // this.getAllShows();
     }
 };
 AppComponent.ctorParameters = () => [
@@ -425,6 +405,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+  
 /* harmony import */ var ngx_youtube_player__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-youtube-player */ "./node_modules/ngx-youtube-player/fesm2015/ngx-youtube-player.js");
 /* harmony import */ var _player_player_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./player/player.component */ "./src/app/player/player.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
@@ -437,7 +418,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 // Imports for sockets
+
 
 const config = { url: 'http://localhost:3333', options: {} };
 let AppModule = class AppModule {
@@ -446,8 +429,11 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-            _player_player_component__WEBPACK_IMPORTED_MODULE_6__["PlayerComponent"],
-            _player_player_component__WEBPACK_IMPORTED_MODULE_6__["SafePipe"],
+
+            _player_player_component__WEBPACK_IMPORTED_MODULE_5__["PlayerComponent"],
+            _player_player_component__WEBPACK_IMPORTED_MODULE_5__["SafePipe"],
+            _party_party_component__WEBPACK_IMPORTED_MODULE_8__["PartyComponent"],
+
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -488,6 +474,85 @@ HttpService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         providedIn: 'root'
     })
 ], HttpService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/party/party.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/party/party.component.css ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".container {\r\n    margin-top: 5%;\r\n    text-align: center;\r\n  }\r\n  \r\n  .insert {\r\n    margin-top: 3%;\r\n  }\r\n  \r\n  .music-insert {\r\n    width: 50%;\r\n    margin-left: 25%;\r\n    text-align: center;\r\n    margin-bottom: 1%;\r\n  }\r\n  \r\n  body {\r\n    background-color: #eeeeee;\r\n    font-family: 'Josefin Sans', sans-serif;\r\n  }\r\n  \r\n  .mgb {\r\n    margin-bottom: 5%;\r\n  }\r\n  \r\n  .mvr {\r\n    margin-left: 21%;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFydHkvcGFydHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCxrQkFBa0I7RUFDcEI7O0VBRUE7SUFDRSxjQUFjO0VBQ2hCOztFQUVBO0lBQ0UsVUFBVTtJQUNWLGdCQUFnQjtJQUNoQixrQkFBa0I7SUFDbEIsaUJBQWlCO0VBQ25COztFQUdBO0lBQ0UseUJBQXlCO0lBQ3pCLHVDQUF1QztFQUN6Qzs7RUFFQTtJQUNFLGlCQUFpQjtFQUNuQjs7RUFFQTtJQUNFLGdCQUFnQjtFQUNsQiIsImZpbGUiOiJzcmMvYXBwL3BhcnR5L3BhcnR5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcclxuICAgIG1hcmdpbi10b3A6IDUlO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIH1cclxuICBcclxuICAuaW5zZXJ0IHtcclxuICAgIG1hcmdpbi10b3A6IDMlO1xyXG4gIH1cclxuICBcclxuICAubXVzaWMtaW5zZXJ0IHtcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgICBtYXJnaW4tbGVmdDogMjUlO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMSU7XHJcbiAgfVxyXG4gIFxyXG4gIFxyXG4gIGJvZHkge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2VlZWVlZTtcclxuICAgIGZvbnQtZmFtaWx5OiAnSm9zZWZpbiBTYW5zJywgc2Fucy1zZXJpZjtcclxuICB9XHJcbiAgXHJcbiAgLm1nYiB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA1JTtcclxuICB9XHJcbiAgXHJcbiAgLm12ciB7XHJcbiAgICBtYXJnaW4tbGVmdDogMjElO1xyXG4gIH0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/party/party.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/party/party.component.ts ***!
+  \******************************************/
+/*! exports provided: PartyComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PartyComponent", function() { return PartyComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../http.service */ "./src/app/http.service.ts");
+/* harmony import */ var ngx_socket_io__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-socket-io */ "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
+
+
+
+// Bringing in The Socket
+
+let PartyComponent = class PartyComponent {
+    constructor(_httpService, _socket) {
+        this._httpService = _httpService;
+        this._socket = _socket;
+        this.title = 'public';
+        this.allSongs = [];
+        this.songs = false;
+        this.userIP = null;
+        this.newSong = { id: "" };
+    }
+    ngOnInit() {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        console.log(this.userIP);
+    }
+    onSubmit() {
+        // Submission of FIRST new song
+        if (this.songs) {
+            this.allSongs.push(this.newSong.link);
+            this.newSong = { id: "" };
+        }
+        // Submission of songs after the first
+        else {
+            var str = this.newSong.link;
+            var array = str.split(/[=&]+/);
+            this.SongId = array[1];
+            this.newSong = { id: "" };
+            this.songs = true;
+        }
+    }
+};
+PartyComponent.ctorParameters = () => [
+    { type: _http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"] },
+    { type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_3__["Socket"] }
+];
+PartyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-party',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./party.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/party/party.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./party.component.css */ "./src/app/party/party.component.css")).default]
+    })
+], PartyComponent);
 
 
 
@@ -642,7 +707,11 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jameydogom/Desktop/codingdojo/SocketTuneMe/public/src/main.ts */"./src/main.ts");
+
+//module.exports = __webpack_require__(/*! /Users/jameydogom/Desktop/codingdojo/SocketTuneMe/public/src/main.ts */"./src/main.ts");
+
+module.exports = __webpack_require__(/*! C:\Users\hljr2\Documents\dojo\mean_stack\socketTuneMe\SocketTuneMe\public\src\main.ts */"./src/main.ts");
+
 
 
 /***/ }),

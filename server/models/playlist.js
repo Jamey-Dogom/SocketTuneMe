@@ -27,7 +27,14 @@ const PlaylistSchema = new mongoose.Schema({
     host: {
         type: String,
         required: [true, "Who is the Host?"]
-    }
+    },
+    key: {
+        type: String,
+        required: [
+            true,
+            "Please Enter a Key."
+        ]
+    },
 }, { timestamps: true })
 
 mongoose.model("Playlist", PlaylistSchema);

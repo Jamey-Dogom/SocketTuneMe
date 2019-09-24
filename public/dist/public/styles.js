@@ -338,7 +338,11 @@ if (content.locals) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jameydogom/Desktop/codingdojo/SocketTuneMe/public/src/styles.css */"./src/styles.css");
+
+//module.exports = __webpack_require__(/*! /Users/jameydogom/Desktop/codingdojo/SocketTuneMe/public/src/styles.css */"./src/styles.css");
+
+module.exports = __webpack_require__(/*! C:\Users\hljr2\Documents\dojo\mean_stack\socketTuneMe\SocketTuneMe\public\src\styles.css */"./src/styles.css");
+
 
 
 /***/ })
