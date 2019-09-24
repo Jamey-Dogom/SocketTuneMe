@@ -1,29 +1,4 @@
-.container {
-  margin-top: 5%;
-  text-align: center;
-}
-
-.insert {
-  margin-top: 3%;
-}
-
-.music-insert {
-  width: 50%;
-  margin-left: 25%;
-  text-align: center;
-  margin-bottom: 1%;
-}
-
-
-body {
-  background-color: #eeeeee;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-.mgb {
-  margin-bottom: 5%;
-}
-
-.mvr {
-  margin-left: 21%;
+.box {
+  /* outline: 2px solid blue; */
+  padding: 2%;
 }
