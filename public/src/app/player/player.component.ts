@@ -1,6 +1,7 @@
-import { Component, ViewEncapsulation, ViewChild, ElementRef, PipeTransform, Pipe, OnInit} from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, ElementRef, PipeTransform, Pipe, OnInit } from '@angular/core';
 import { DomSanitizer } from "@angular/platform-browser";
 import { Output, Input, EventEmitter } from '@angular/core';
+
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -13,11 +14,39 @@ export class SafePipe implements PipeTransform {
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
-  styleUrls: ['./player.component.css']
+  styleUrls: ['./player.component.css'],
+//   template: `
+//   <youtube-player
+// [videoId]="id"
+// (ready)="savePlayer($event)"
+// (change)="onStateChange($event)"
+// ></youtube-player>
+// `
+
 })
 
 export class PlayerComponent implements OnInit {
-  title = 'app';
+  title = 'app'
+  id = '';
+  private player;
+  private ytEvent;
+
+  onStateChange(event) {
+    this.ytEvent = event.data;
+    console.log("song is over")
+  }
+  savePlayer(player) {
+    this.player = player;
+  }
+  
+  playVideo() {
+    this.player.playVideo();
+  }
+  
+  pauseVideo() {
+    this.player.pauseVideo();
+  }
+
 
   @Input() videoID: String;
   autoPlay: String = "?autoplay=1"
@@ -29,6 +58,6 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
 
 }

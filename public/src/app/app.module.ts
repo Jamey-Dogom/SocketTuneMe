@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { PlayerComponent, SafePipe } from './player/player.component';
 import { FormsModule } from '@angular/forms';
 // Imports for sockets
@@ -20,9 +21,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
   ],
   imports: [
     BrowserModule,
+    NgxYoutubePlayerModule.forRoot(),
+    // YoutubePlayerModule,npm i ngx-youtube-player
     AppRoutingModule,
     FormsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
