@@ -1,0 +1,16 @@
+.box {
+    outline: 2px solid blue;
+    padding: 2%;
+  }
+
+  .higher {
+      margin-top: -2%;
+  }
+
+  .mid {
+      vertical-align: middle;
+  }
+  
+  i.material-icons , i.material-icons + span {
+    vertical-align: middle;
+}

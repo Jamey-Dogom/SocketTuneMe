@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 // Imports for sockets
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { PartyComponent } from './party/party.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
 
 
@@ -18,6 +19,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
     PlayerComponent,
     SafePipe,
     PartyComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,

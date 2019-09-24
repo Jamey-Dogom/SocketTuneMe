@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PartyComponent } from './party/party.component'
-import { AppComponent } from './app.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+
 
 
 const routes: Routes = [
@@ -9,11 +10,10 @@ const routes: Routes = [
     path: 'party/:id',
     component: PartyComponent
   },
-  // {
-  //   path: '',
-  //   pathMatch: 'full',
-  //   component: AppComponent
-  // }
+  {
+    path: '',
+    component: WelcomeComponent
+  }
 ];
 
 @NgModule({
