@@ -3,14 +3,18 @@
     padding: 2%;
   }
 
-  .higher {
+.higher {
       margin-top: -2%;
   }
 
-  .mid {
+.mid {
       vertical-align: middle;
   }
   
-  i.material-icons , i.material-icons + span {
+i.material-icons , i.material-icons + span {
     vertical-align: middle;
+}
+
+.width-45 {
+    width: 45%;
 }
