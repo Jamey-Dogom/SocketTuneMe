@@ -6,10 +6,13 @@ import { AppComponent } from './app.component';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { PlayerComponent, SafePipe } from './player/player.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
+
 // Imports for sockets
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { PartyComponent } from './party/party.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { HttpService } from './http.service';
 const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
 
 
@@ -28,9 +31,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
     AppRoutingModule,
     FormsModule,
     SocketIoModule.forRoot(config),
-
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,7 +12,7 @@
 
 <body>
   <div class="container">
-    <p *ngIf="userIP" >{{ userIP }}</p>
+    {{ playlist | json}}
     <h2>SocketTuneMe🎵</h2>
     <!--  music player component -->
     <app-player *ngIf="SongId" [videoID]="SongId"></app-player>
