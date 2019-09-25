@@ -1,29 +1,29 @@
 .container {
-    margin-top: 5%;
-    text-align: center;
-  }
-  
-  .insert {
-    margin-top: 3%;
-  }
-  
-  .music-insert {
-    width: 50%;
-    margin-left: 25%;
-    text-align: center;
-    margin-bottom: 1%;
-  }
-  
-  
-  body {
-    background-color: #eeeeee;
-    font-family: 'Josefin Sans', sans-serif;
-  }
-  
-  .mgb {
-    margin-bottom: 5%;
-  }
-  
-  .mvr {
-    margin-left: 21%;
-  }
+  text-align: center;
+}
+
+/******SPEAKER DECORATIONS**************************/
+.speaker-body {
+  min-height: 75vh;
+}
+
+.speaker-hole-1 {
+  width: 25vh;
+  height: 25vh;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.speaker-hole-2 {
+  width: 13vh;
+  height: 13vh;
+  border-radius: 50%;
+  background-color: #DC3545;
+}
+
+/******SCREEN DECORATIONS**************************/
+.screen {
+  height: 50vh;
+  background-color: black;
+  border-radius: 1%;
+}
