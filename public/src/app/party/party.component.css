@@ -4,7 +4,7 @@
 
 /******SPEAKER DECORATIONS**************************/
 .speaker-body {
-  min-height: 75vh;
+  min-height: 70vh;
 }
 
 .speaker-hole-1 {
@@ -26,4 +26,10 @@
   height: 50vh;
   background-color: black;
   border-radius: 1%;
+}
+
+/******SEARCH RESULTS**************************/
+.overflow-auto {
+  height: 650px;
+  overflow: scroll;
 }

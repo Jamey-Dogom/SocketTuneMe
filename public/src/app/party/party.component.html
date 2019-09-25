@@ -3,7 +3,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+<script src="jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
@@ -18,28 +23,58 @@
       <div class="container"><h3><span style="color: #DC3545">S</span>ongs</h3></div>
       <div class="card mb-4 shadow-lg" style="background-color: black">
         <div class="card-header">
-          <form #form action="http://www.youtube.com/results" method="get" target="_blank">
+            <form (submit)="myFunction()">
+                <div class="input-group">
+                    <input class="form-control mx-auto d-inline-block" name="query"
+                    [(ngModel)]="search.query" type="text" placeholder="Look for Songs" />
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-danger">Find</button>
+                    </div>
+                  </div>
+              </form>
+            <div class="overflow-auto" *ngIf="search.query">
+              <!-- <div id ="results"> -->
+                  <div id ="results1"></div>
+                  <div id ="results2"></div>
+                  <div id ="results3"></div>
+                  <div id ="results4"></div>
+                  <div id ="results5"></div>
+                  <div id ="results6"></div>
+                  <div id ="results7"></div>
+                  <div id ="results8"></div>
+                  <div id ="results9"></div>
+                  <div id ="results10"></div>
+
+              <!-- </div> -->
+                <!-- <div id="results" *ngFor="let result of searchResults">
+                  <p style = "color:white">{{result.snippet.title}}</p>
+                </div> -->
+            </div>
+
+          <!-- <form #form action="http://www.youtube.com/results" method="get" target="_blank">
             <div class="input-group">
-              <input class="form-control mx-auto d-inline-block" id="searchSong" name="search_query" type="text" placeholder="Look for Songs" />
+              <input class="form-control mx-auto d-inline-block" name="search_query" type="text" placeholder="Look for Playlists" />
               <div class="input-group-append">
                 <button type="submit" class="btn btn-danger" (click)="form.submit()">Find</button>
               </div>
             </div>
-          </form>
+          </form> -->
 
         </div>
-        <div class="speaker-body card-body">
+       <div class="speaker-body card-body">
+       <div *ngIf="!search.query">
           <div class="speaker-hole-1 mx-auto mb-0" style="margin-top: 5vh"></div>
           <div class="speaker-hole-2 mx-auto" style="margin-top: -19vh;"></div>
           <div class="speaker-hole-1 mx-auto mb-0" style="margin-top: 15vh"></div>
           <div class="speaker-hole-2 mx-auto" style="margin-top: -19vh; background-color: black;"></div>
         </div>
+       </div>
       </div>
       </div>
       <div class="col-6">
         <div class="container">
           <p *ngIf="userIP" >{{ userIP }}</p>
-          <h2><span style="color: #DC3545">Socket</span>Tune</h2>
+          <h2><span style="color: #DC3545">Socket</span>Tunez</h2>
           <!--  music player component --------------------------------------------------------------------->
           <div class="screen"><app-player *ngIf="SongId" [videoID]="SongId"></app-player></div>
           <div class="insert">
@@ -47,7 +82,7 @@
             <!--  form for song submission -->
             <form (submit)="onSubmit()">
               <div class="form-group">
-                <input type="text" class="form-control music-insert mx-auto" name="link" placeholder="Fire Tracks Only"
+                <input type="text" class="form-control music-insert mx-auto" id = "videoInput" name="link" placeholder="Fire Tracks Only"
                        [(ngModel)]="newSong.link">
               </div>
               <button type="submit" class="btn btn-danger">Add</button>
@@ -66,14 +101,14 @@
         <div class="container"><h3><span style="color: #DC3545">P</span>laylists</h3></div>
         <div class="card mb-4 shadow-lg" style="background-color: black">
           <div class="card-header">
-            <form #form action="http://www.youtube.com/results" method="get" target="_blank">
+           
               <div class="input-group">
-                <input class="form-control mx-auto d-inline-block" name="search_query" type="text" placeholder="Look for Playlists" />
+                
                 <div class="input-group-append">
-                  <button type="submit" class="btn btn-danger" (click)="form.submit()">Find</button>
+                  
                 </div>
               </div>
-            </form>
+   
           </div>
           <div class="speaker-body card-body">
             <div class="speaker-hole-1 mx-auto mb-0" style="margin-top: 5vh"></div>
