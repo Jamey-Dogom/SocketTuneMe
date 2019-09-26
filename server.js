@@ -20,13 +20,20 @@ const io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
 
-    
-    var clientIp = socket.request.connection._peername;
-
-    console.log(clientIp);
-
-    socket.emit('logIn', {
-        msg: "We Got The IP",
-        ip: clientIp
+    // Join the Socket Room
+    io.on('joinRoom', data => {
+        socket.join(data)
+        console.log(`Joining ${data}`);
     });
+
+    // Gets the ipV6
+    // var clientIp = socket.request.connection._peername;
+
+    // console.log("Client Port: ",clientIp.port);
+
+    // socket.emit('logIn', {
+    //     msg: "We Got The IP",
+    //     ip: clientIp
+    // });
 })
+

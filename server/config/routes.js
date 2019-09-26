@@ -7,9 +7,11 @@ module.exports = function(app) {
 
     app.post('/api/playlist', PlaylistController.create);
 
-    app.get('/api/playlist/:id', PlaylistController.getOne);
+    app.get('/api/playlist/:key', PlaylistController.getOne);
 
     app.delete('/api/playlist/:id', PlaylistController.delete);
+
+    app.put('/api/playlist/:key', PlaylistController.update);
 
     app.get('/api/songs', SongController.index);
     

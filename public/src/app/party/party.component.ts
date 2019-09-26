@@ -20,7 +20,7 @@ export class PartyComponent implements OnInit {
   }
 
   SongId = null;
-  socketId;
+  userId;
   playing = false;
 
   constructor(
@@ -32,16 +32,18 @@ export class PartyComponent implements OnInit {
 
 
   ngOnInit() {
-    // Find and save the playlist based on url
     this._route.params
       .subscribe((params: Params) => {
-        this._httpService.getPlaylist(params.key)
+        this._httpService.getPlaylist(params.room)
           .subscribe((data: any) => {
-            this.playlist = data.playlist[0];
-            this.socketId = params.socket;
-          });
 
+            // Find the playlist, assign userID based on url  
+            this.playlist = data.playlist[0];
+            this.userId = params.user;
+          });
       })
+    // invoke to join room
+    this.joinRoom();
   }
 
   onSubmit() {
@@ -51,14 +53,14 @@ export class PartyComponent implements OnInit {
       this._httpService.createSong({
         id: arr[1],
         likes: [],
-        postedBy: this.socketId
+        postedBy: this.userId
       })
-        .subscribe((data:any) => {
+        .subscribe((data: any) => {
           console.log("should be a playlist object: ", this.playlist);
           this.playlist.songs.push(data);
           console.log("should be a playlist object 2: ", this.playlist);
           this._httpService.updatePlaylist(this.playlist)
-            .subscribe((data:any) => {
+            .subscribe((data: any) => {
               console.log(data)
             });
         })
@@ -76,5 +78,12 @@ export class PartyComponent implements OnInit {
     }
   }
 
-
+  // Emit event to have server place socket into room
+  joinRoom() {
+    this._route.params
+      .subscribe((params: Params) => {
+        this._socket.emit('joinRoom',  params.room );
+        console.log(params.room);
+      });
+  }
 }
