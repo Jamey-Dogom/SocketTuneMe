@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n<router-outlet></router-outlet>");
+/* harmony default export */ __webpack_exports__["default"] = ("<router-outlet></router-outlet>\n");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\r\n<html>\r\n<meta charset=\"UTF-8\">\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n<link href=\"https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap\" rel=\"stylesheet\">\r\n<script src=\"https://code.jquery.com/jquery-3.4.1.js\" integrity=\"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=\"\r\n  crossorigin=\"anonymous\"></script>\r\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js\"></script>\r\n<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n  integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\r\n\r\n<body>\r\n  <div class=\"container\">\r\n    {{ playlist | json}}\r\n    <h2>SocketTuneMe🎵</h2>\r\n    <!--  music player component -->\r\n    <app-player *ngIf=\"SongId\" [videoID]=\"SongId\"></app-player>\r\n    <div class=\"insert\">\r\n      <h3>Search for that next 🔥 track</h3>\r\n      <form #form action=\"http://www.youtube.com/results\" method=\"get\" target=\"_blank\">\r\n        <div class=\"form-group\">\r\n          <input class=\"form-control music-insert\" name=\"search_query\" type=\"text\" maxlength=\"128\" />\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-success mgb\" (click)=\"form.submit()\">Find</button>\r\n      </form>\r\n      <h3>Insert that next 🔥 track</h3>\r\n      <!--  form for song submission -->\r\n      <form (submit)=\"onSubmit()\">\r\n        <div class=\"form-group\">\r\n          <input type=\"text\" class=\"form-control music-insert\" name=\"link\" placeholder=\"Fire Tracks Only\"\r\n            [(ngModel)]=\"newSong.link\">\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-danger mgb\">Add</button>\r\n      </form>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-lg-12\" *ngFor=\"let song of allSongs;\">\r\n        <div class=\"card text-white bg-dark mb-3 mvr\" style=\"max-width: 40rem;\">\r\n          <div class=\"card-header\">{{song}} <span class=\"font-size: 18px\">👍</span> </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</body>\r\n\r\n</html>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\n<html>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n<script src=\"https://apis.google.com/js/client.js?onload=handleClientLoad\"></script>\n<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js\"></script>\n<script src=\"https://apis.google.com/js/client.js?onload=googleApiClientReady\"></script>\n<script src=\"jquery-3.4.1.min.js\"></script>\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>\n<script src=\"//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js\"></script>\n<link href=\"https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap\" rel=\"stylesheet\">\n<script src=\"https://code.jquery.com/jquery-3.4.1.js\" integrity=\"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=\"\n  crossorigin=\"anonymous\"></script>\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js\"></script>\n<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\n  integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n\n<body class=\"p-4\">\n  <div class=\"mx-auto p-0\">\n    <div class=\"row\">\n      <div class=\"col-3\">\n      <div class=\"container\"><h3><span style=\"color: #DC3545\">S</span>ongs</h3></div>\n      <div class=\"card mb-4 shadow-lg\" style=\"background-color: black\">\n        <div class=\"card-header\">\n            <form (submit)=\"myFunction()\">\n                <div class=\"input-group\">\n                    <input class=\"form-control mx-auto d-inline-block\" name=\"query\"\n                    [(ngModel)]=\"search.query\" type=\"text\" placeholder=\"Look for Songs\" />\n                    <div class=\"input-group-append\">\n                      <button type=\"submit\" class=\"btn btn-danger\">Find</button>\n                    </div>\n                  </div>\n              </form>\n            <div class=\"overflow-auto\" *ngIf=\"search.query\">\n              <!-- <div id =\"results\"> -->\n                  <div id =\"results1\"></div>\n                  <div id =\"results2\"></div>\n                  <div id =\"results3\"></div>\n                  <div id =\"results4\"></div>\n                  <div id =\"results5\"></div>\n                  <div id =\"results6\"></div>\n                  <div id =\"results7\"></div>\n                  <div id =\"results8\"></div>\n                  <div id =\"results9\"></div>\n                  <div id =\"results10\"></div>\n\n              <!-- </div> -->\n                <!-- <div id=\"results\" *ngFor=\"let result of searchResults\">\n                  <p style = \"color:white\">{{result.snippet.title}}</p>\n                </div> -->\n            </div>\n\n          <!-- <form #form action=\"http://www.youtube.com/results\" method=\"get\" target=\"_blank\">\n            <div class=\"input-group\">\n              <input class=\"form-control mx-auto d-inline-block\" name=\"search_query\" type=\"text\" placeholder=\"Look for Playlists\" />\n              <div class=\"input-group-append\">\n                <button type=\"submit\" class=\"btn btn-danger\" (click)=\"form.submit()\">Find</button>\n              </div>\n            </div>\n          </form> -->\n\n        </div>\n       <div class=\"speaker-body card-body\">\n       <div *ngIf=\"!search.query\">\n          <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 5vh\"></div>\n          <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh;\"></div>\n          <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 15vh\"></div>\n          <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh; background-color: black;\"></div>\n        </div>\n       </div>\n      </div>\n      </div>\n      <div class=\"col-6\">\n        <div class=\"container\">\n          <p *ngIf=\"userIP\" >{{ userIP }}</p>\n          <h2><span style=\"color: #DC3545\">Socket</span>Tunez</h2>\n          <!--  music player component --------------------------------------------------------------------->\n          <div class=\"screen\"><app-player *ngIf=\"SongId\" [videoID]=\"SongId\"></app-player></div>\n          <div class=\"insert\">\n            <h3>Insert that next 🔥 track</h3>\n            <!--  form for song submission -->\n            <form (submit)=\"onSubmit()\">\n              <div class=\"form-group\">\n                <input type=\"text\" class=\"form-control music-insert mx-auto\" id = \"videoInput\" name=\"link\" placeholder=\"Fire Tracks Only\"\n                       [(ngModel)]=\"newSong.link\">\n              </div>\n              <button type=\"submit\" class=\"btn btn-danger\">Add</button>\n            </form>\n          </div>\n          <div class=\"row\">\n            <div class=\"col-lg-12\" *ngFor=\"let song of allSongs;\">\n              <div class=\"card text-white bg-dark\" style=\"max-width: 40rem;\">\n                <div class=\"card-header\">{{song}} <span class=\"font-size: 18px\">👍</span> </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-3\">\n        <div class=\"container\"><h3><span style=\"color: #DC3545\">P</span>laylists</h3></div>\n        <div class=\"card mb-4 shadow-lg\" style=\"background-color: black\">\n          <div class=\"card-header\">\n           \n              <div class=\"input-group\">\n                \n                <div class=\"input-group-append\">\n                  \n                </div>\n              </div>\n   \n          </div>\n          <div class=\"speaker-body card-body\">\n            <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 5vh\"></div>\n            <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh;\"></div>\n            <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 15vh\"></div>\n            <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh; background-color: black;\"></div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</body>\n\n");
 
 /***/ }),
 
@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- component responsible for playing current song\r\nlogic for retrieving next song and playing it -->\r\n<!-- <iframe *ngIf=\"videoID\" width=\"560\" height=\"315\" [src]=\"videoString + videoID + autoPlay | safe\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe> -->\r\n\r\n<!-- <youtube-player  *ngIf=\"videoID\"\r\n[videoId]=\"videoID\" \r\n(ready)=\"savePlayer($event)\"\r\n(change)=\"onStateChange($event)\"\r\n>\r\n</youtube-player> -->\r\n\r\n<div class=\"container\" *ngIf=\"videoID\">\r\n    <section class=\"panel panel-info\">\r\n     \r\n      <div class=\"panel-body\">\r\n        <youtube-player \r\n          [videoId]=\"videoID\" \r\n          width=\"560\" \r\n          height=\"315\"\r\n          (ready)=\"savePlayer($event)\"\r\n          (change)=\"onStateChange($event)\"\r\n        >\r\n        </youtube-player>\r\n      </div>\r\n    </section>\r\n    \r\n    <div class=\"col-md-12\">\r\n      <div class=\"btn-group\" role=\"group\">\r\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"playVideo()\">Play</button>\r\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"pauseVideo()\">Pause</button>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"col-md-12\">\r\n      <section class=\"panel panel-success\">\r\n        <div class=\"panel-heading\">Player State</div>\r\n        <div class=\"panel-body\">\r\n          <pre>{{ ytEvent }}</pre>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- component responsible for playing current song\nlogic for retrieving next song and playing it -->\n<!-- <iframe *ngIf=\"videoID\" width=\"560\" height=\"315\" [src]=\"videoString + videoID + autoPlay | safe\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe> -->\n\n<!-- <youtube-player  *ngIf=\"videoID\"\n[videoId]=\"videoID\"\n(ready)=\"savePlayer($event)\"\n(change)=\"onStateChange($event)\"\n>\n</youtube-player> -->\n\n<div class=\"container youtube-player\" *ngIf=\"videoID\">\n    <section class=\"panel panel-info\">\n\n      <div class=\"panel-body\">\n        <youtube-player\n          [videoId]=\"videoID\"\n          (ready)=\"savePlayer($event)\"\n          (change)=\"onStateChange($event)\"\n          width=\"750\"\n          height=\"400\"\n          \n        >\n        </youtube-player>\n      </div>\n    </section>\n\n    <div class=\"col-md-12\">\n      <div class=\"btn-group\" role=\"group\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"playVideo()\">Play</button>\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"pauseVideo()\">Pause</button>\n      </div>\n    </div>\n\n    <div class=\"col-md-12\">\n      <section class=\"panel panel-success\">\n        <div class=\"panel-heading\">Player State</div>\n        <div class=\"panel-body\">\n          <pre>{{ ytEvent }}</pre>\n        </div>\n      </section>\n    </div>\n  </div>\n");
 
 /***/ }),
 
@@ -71,7 +71,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+
 /* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n    <title>Welcome</title>\r\n    <!-- Compiled and minified CSS -->\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">\r\n\r\n    <!-- Compiled and minified JavaScript -->\r\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>\r\n\r\n    <!-- Icons -->\r\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\r\n    <!-- Format to use: <i class=\"material-icons\">add</i> -->\r\n\r\n</head>\r\n\r\n<body>\r\n    <div class=\"container row\">\r\n        <h1 class=\"center\">S<i style=\"margin-right: -2%;\" class=\"medium material-icons\">blur_circular</i> cket Tunes </h1>\r\n\r\n        <div class=\"row box\">\r\n            <!-- Form to create a party -->\r\n            <div class=\"box width-45 left\">\r\n                <form (submit)=\"createParty()\">\r\n                    <div>\r\n                        <label for=\"\">Name your party room:</label>\r\n                        <input type=\"text\" name=\"name\" [(ngModel)]=\"newPlaylist.room\">\r\n                    </div>\r\n                    <button class=\"btn\" >Get it started in here</button>\r\n                </form>\r\n            </div>\r\n\r\n            <!-- Form to join a party -->\r\n            <div class=\"box col s5 right\">\r\n\r\n            </div>\r\n        </div>\r\n\r\n\r\n    </div>\r\n</body>\r\n\r\n</html>");
+
 
 /***/ }),
 
@@ -356,7 +358,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -414,6 +416,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _party_party_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./party/party.component */ "./src/app/party/party.component.ts");
 /* harmony import */ var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./welcome/welcome.component */ "./src/app/welcome/welcome.component.ts");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./http.service */ "./src/app/http.service.ts");
+/* harmony import */ var ng_gapi__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ng-gapi */ "./node_modules/ng-gapi/lib/index.js");
 
 
 
@@ -429,6 +432,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const config = { url: 'http://localhost:3333', options: {} };
+
+let gapiClientConfig = {
+    client_id: "CLIENT_ID",
+    discoveryDocs: ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"],
+    scope: [
+        "https://www.googleapis.com/auth/analytics.readonly",
+        "https://www.googleapis.com/auth/analytics"
+    ].join(" ")
+};
 let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -448,6 +460,10 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
             ngx_socket_io__WEBPACK_IMPORTED_MODULE_9__["SocketIoModule"].forRoot(config),
             _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"],
+            ng_gapi__WEBPACK_IMPORTED_MODULE_13__["GoogleApiModule"].forRoot({
+                provide: ng_gapi__WEBPACK_IMPORTED_MODULE_13__["NG_GAPI_CONFIG"],
+                useValue: gapiClientConfig
+            }),
         ],
         providers: [_http_service__WEBPACK_IMPORTED_MODULE_12__["HttpService"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -522,7 +538,7 @@ HttpService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".container {\r\n    margin-top: 5%;\r\n    text-align: center;\r\n  }\r\n  \r\n  .insert {\r\n    margin-top: 3%;\r\n  }\r\n  \r\n  .music-insert {\r\n    width: 50%;\r\n    margin-left: 25%;\r\n    text-align: center;\r\n    margin-bottom: 1%;\r\n  }\r\n  \r\n  body {\r\n    background-color: #eeeeee;\r\n    font-family: 'Josefin Sans', sans-serif;\r\n  }\r\n  \r\n  .mgb {\r\n    margin-bottom: 5%;\r\n  }\r\n  \r\n  .mvr {\r\n    margin-left: 21%;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFydHkvcGFydHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCxrQkFBa0I7RUFDcEI7O0VBRUE7SUFDRSxjQUFjO0VBQ2hCOztFQUVBO0lBQ0UsVUFBVTtJQUNWLGdCQUFnQjtJQUNoQixrQkFBa0I7SUFDbEIsaUJBQWlCO0VBQ25COztFQUdBO0lBQ0UseUJBQXlCO0lBQ3pCLHVDQUF1QztFQUN6Qzs7RUFFQTtJQUNFLGlCQUFpQjtFQUNuQjs7RUFFQTtJQUNFLGdCQUFnQjtFQUNsQiIsImZpbGUiOiJzcmMvYXBwL3BhcnR5L3BhcnR5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcclxuICAgIG1hcmdpbi10b3A6IDUlO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIH1cclxuICBcclxuICAuaW5zZXJ0IHtcclxuICAgIG1hcmdpbi10b3A6IDMlO1xyXG4gIH1cclxuICBcclxuICAubXVzaWMtaW5zZXJ0IHtcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgICBtYXJnaW4tbGVmdDogMjUlO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMSU7XHJcbiAgfVxyXG4gIFxyXG4gIFxyXG4gIGJvZHkge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2VlZWVlZTtcclxuICAgIGZvbnQtZmFtaWx5OiAnSm9zZWZpbiBTYW5zJywgc2Fucy1zZXJpZjtcclxuICB9XHJcbiAgXHJcbiAgLm1nYiB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA1JTtcclxuICB9XHJcbiAgXHJcbiAgLm12ciB7XHJcbiAgICBtYXJnaW4tbGVmdDogMjElO1xyXG4gIH0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".container {\n  text-align: center;\n}\n\n/******SPEAKER DECORATIONS**************************/\n\n.speaker-body {\n  min-height: 70vh;\n}\n\n.speaker-hole-1 {\n  width: 25vh;\n  height: 25vh;\n  border-radius: 50%;\n  background-color: white;\n}\n\n.speaker-hole-2 {\n  width: 13vh;\n  height: 13vh;\n  border-radius: 50%;\n  background-color: #DC3545;\n}\n\n/******SCREEN DECORATIONS**************************/\n\n.screen {\n  height: 50vh;\n  background-color: black;\n  border-radius: 1%;\n}\n\n/******SEARCH RESULTS**************************/\n\n.overflow-auto {\n  height: 650px;\n  overflow: scroll;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFydHkvcGFydHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQSxvREFBb0Q7O0FBQ3BEO0VBQ0UsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsdUJBQXVCO0FBQ3pCOztBQUVBO0VBQ0UsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIseUJBQXlCO0FBQzNCOztBQUVBLG1EQUFtRDs7QUFDbkQ7RUFDRSxZQUFZO0VBQ1osdUJBQXVCO0VBQ3ZCLGlCQUFpQjtBQUNuQjs7QUFFQSwrQ0FBK0M7O0FBQy9DO0VBQ0UsYUFBYTtFQUNiLGdCQUFnQjtBQUNsQiIsImZpbGUiOiJzcmMvYXBwL3BhcnR5L3BhcnR5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4vKioqKioqU1BFQUtFUiBERUNPUkFUSU9OUyoqKioqKioqKioqKioqKioqKioqKioqKioqL1xuLnNwZWFrZXItYm9keSB7XG4gIG1pbi1oZWlnaHQ6IDcwdmg7XG59XG5cbi5zcGVha2VyLWhvbGUtMSB7XG4gIHdpZHRoOiAyNXZoO1xuICBoZWlnaHQ6IDI1dmg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5zcGVha2VyLWhvbGUtMiB7XG4gIHdpZHRoOiAxM3ZoO1xuICBoZWlnaHQ6IDEzdmg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0RDMzU0NTtcbn1cblxuLyoqKioqKlNDUkVFTiBERUNPUkFUSU9OUyoqKioqKioqKioqKioqKioqKioqKioqKioqL1xuLnNjcmVlbiB7XG4gIGhlaWdodDogNTB2aDtcbiAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XG4gIGJvcmRlci1yYWRpdXM6IDElO1xufVxuXG4vKioqKioqU0VBUkNIIFJFU1VMVFMqKioqKioqKioqKioqKioqKioqKioqKioqKi9cbi5vdmVyZmxvdy1hdXRvIHtcbiAgaGVpZ2h0OiA2NTBweDtcbiAgb3ZlcmZsb3c6IHNjcm9sbDtcbn1cbiJdfQ== */");
 
 /***/ }),
 
@@ -541,6 +557,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../http.service */ "./src/app/http.service.ts");
 /* harmony import */ var ngx_socket_io__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-socket-io */ "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var ng_gapi_lib_GoogleApiService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ng-gapi/lib/GoogleApiService */ "./node_modules/ng-gapi/lib/GoogleApiService.js");
 
 
 
@@ -548,24 +565,36 @@ __webpack_require__.r(__webpack_exports__);
 
 // Added Activated Route and Params to get the Document
 
+
 let PartyComponent = class PartyComponent {
-    constructor(_httpService, _socket, _router, _route) {
+    constructor(_httpService, _socket, _router, _route, gapiService) {
         this._httpService = _httpService;
         this._socket = _socket;
         this._router = _router;
         this._route = _route;
+        this.gapiService = gapiService;
         this.playlist = null;
+        this.search = {
+            query: ''
+        };
+        this.weGotResults = false;
+        this.searchResults = [];
         this.newSong = {
             link: ""
         };
         this.SongId = null;
         this.playing = false;
+        gapiService.onLoad().subscribe(() => {
+            // Here we can use gapi
+            gapi['client'].setApiKey('AIzaSyAStWnWGpBLHOiAJNM2KCwvME9yZmiY_SY');
+        });
     }
     ngOnInit() {
         this._route.params
             .subscribe((params) => {
             this._httpService.getPlaylist(params.room)
                 .subscribe((data) => {
+
                 // Find the playlist, assign userID based on url  
                 this.playlist = data.playlist[0];
                 this.userId = params.user;
@@ -573,12 +602,13 @@ let PartyComponent = class PartyComponent {
         });
         // invoke to join room
         this.joinRoom();
+
     }
     onSubmit() {
-        let arr = this.newSong.link.split(/[=&]+/);
+        // let arr = this.newSong.link.split(/[=&]+/);
         if (this.playing) {
             this._httpService.createSong({
-                id: arr[1],
+                id: this.newSong.link,
                 likes: [],
                 postedBy: this.userId
             })
@@ -598,19 +628,79 @@ let PartyComponent = class PartyComponent {
                 .subscribe(playlist => console.log(playlist));
         }
         else {
-            this.SongId = arr[1];
+            this.SongId = this.newSong.link;
             this.playing = true;
             this.newSong = {
                 link: ''
             };
         }
     }
+
     // Emit event to have server place socket into room
     joinRoom() {
         this._route.params
             .subscribe((params) => {
             this._socket.emit('joinRoom', params.room);
             console.log(params.room);
+
+    makeRequest(q) {
+        let self = this;
+        console.log("hereeeee");
+        this.weGotResults = true;
+        this.searchResults = [];
+        var request = gapi['client']['youtube'].search.list({
+            q: q,
+            part: 'snippet',
+            maxResults: 10,
+            type: 'video'
+        });
+        // console.log("hi")
+        request.execute(function (response) {
+            console.log("also here");
+            var srchItems = response.result.items;
+            // self.searchResults = self.searchResults.concat(srchItems);
+            $('#results').empty();
+            self.newSong.link = '';
+            let counter = 1;
+            $.each(srchItems, function (index, item) {
+                let vidTitle = item.snippet.title;
+                let vidThumburl = item.snippet.thumbnails.default.url;
+                let vidThumbimg = '<pre><img  id="' + item.id.videoId + '" name="' + item.snippet.title + '" src="' + vidThumburl + '" alt="No  Image Available." style="width:300px;height:240px"></pre>';
+                $(`#results${counter}`).append('<pre>' + '<p style = "color: white">' + vidTitle + '</p>' + vidThumbimg + '</pre>').on('click', function () {
+                    console.log(vidTitle);
+                    $("#videoInput").val(item.id.videoId);
+                    self.newSong.link = item.id.videoId;
+                });
+                counter += 1;
+            });
+        });
+    }
+    triggerEvent() {
+        console.log("suhhhh");
+        // var target = event.target || event.srcElement || event.currentTarget;
+        // var idAttr = target.attributes.id;
+        // console.log(idAttr);
+    }
+    myFunction() {
+        console.log(this.search.query);
+        console.log(window['gapi']);
+        this.keyWordsearch(this.search.query);
+    }
+    ;
+    keyWordsearch(name) {
+        console.log("here");
+        let self = this;
+        gapi['client'].load('youtube', 'v3', function () {
+            console.log("here");
+            let info = '{ "data": [{"name":' + `"${name}"` + '}] }';
+            console.log(info);
+            JSON.stringify(info);
+            console.log(info);
+            let data = JSON.parse(info);
+            $.each(data["data"], function (index, value) {
+                self.makeRequest(value["name"]);
+            });
+
         });
     }
 };
@@ -618,7 +708,8 @@ PartyComponent.ctorParameters = () => [
     { type: _http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"] },
     { type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_3__["Socket"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
+    { type: ng_gapi_lib_GoogleApiService__WEBPACK_IMPORTED_MODULE_5__["GoogleApiService"] }
 ];
 PartyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -641,7 +732,7 @@ PartyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BsYXllci9wbGF5ZXIuY29tcG9uZW50LmNzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("@media only screen and (min-width: 768px) {\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGxheWVyL3BsYXllci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBIiwiZmlsZSI6InNyYy9hcHAvcGxheWVyL3BsYXllci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA3NjhweCkge1xuXG59XG4iXX0= */");
 
 /***/ }),
 
@@ -725,7 +816,7 @@ PlayerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".box {\r\n    outline: 2px solid blue;\r\n    padding: 2%;\r\n  }\r\n\r\n.higher {\r\n      margin-top: -2%;\r\n  }\r\n\r\n.mid {\r\n      vertical-align: middle;\r\n  }\r\n\r\ni.material-icons , i.material-icons + span {\r\n    vertical-align: middle;\r\n}\r\n\r\n.width-45 {\r\n    width: 45%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvd2VsY29tZS93ZWxjb21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx1QkFBdUI7SUFDdkIsV0FBVztFQUNiOztBQUVGO01BQ00sZUFBZTtFQUNuQjs7QUFFRjtNQUNNLHNCQUFzQjtFQUMxQjs7QUFFRjtJQUNJLHNCQUFzQjtBQUMxQjs7QUFFQTtJQUNJLFVBQVU7QUFDZCIsImZpbGUiOiJzcmMvYXBwL3dlbGNvbWUvd2VsY29tZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJveCB7XHJcbiAgICBvdXRsaW5lOiAycHggc29saWQgYmx1ZTtcclxuICAgIHBhZGRpbmc6IDIlO1xyXG4gIH1cclxuXHJcbi5oaWdoZXIge1xyXG4gICAgICBtYXJnaW4tdG9wOiAtMiU7XHJcbiAgfVxyXG5cclxuLm1pZCB7XHJcbiAgICAgIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XHJcbiAgfVxyXG4gIFxyXG5pLm1hdGVyaWFsLWljb25zICwgaS5tYXRlcmlhbC1pY29ucyArIHNwYW4ge1xyXG4gICAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcclxufVxyXG5cclxuLndpZHRoLTQ1IHtcclxuICAgIHdpZHRoOiA0NSU7XHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".box {\n    outline: 2px solid blue;\n    padding: 2%;\n  }\n\n.higher {\n      margin-top: -2%;\n  }\n\n.mid {\n      vertical-align: middle;\n  }\n\ni.material-icons , i.material-icons + span {\n    vertical-align: middle;\n}\n\n.width-45 {\n    width: 45%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvd2VsY29tZS93ZWxjb21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx1QkFBdUI7SUFDdkIsV0FBVztFQUNiOztBQUVGO01BQ00sZUFBZTtFQUNuQjs7QUFFRjtNQUNNLHNCQUFzQjtFQUMxQjs7QUFFRjtJQUNJLHNCQUFzQjtBQUMxQjs7QUFFQTtJQUNJLFVBQVU7QUFDZCIsImZpbGUiOiJzcmMvYXBwL3dlbGNvbWUvd2VsY29tZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJveCB7XG4gICAgb3V0bGluZTogMnB4IHNvbGlkIGJsdWU7XG4gICAgcGFkZGluZzogMiU7XG4gIH1cblxuLmhpZ2hlciB7XG4gICAgICBtYXJnaW4tdG9wOiAtMiU7XG4gIH1cblxuLm1pZCB7XG4gICAgICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xuICB9XG4gIFxuaS5tYXRlcmlhbC1pY29ucyAsIGkubWF0ZXJpYWwtaWNvbnMgKyBzcGFuIHtcbiAgICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xufVxuXG4ud2lkdGgtNDUge1xuICAgIHdpZHRoOiA0NSU7XG59Il19 */");
 
 /***/ }),
 
@@ -857,7 +948,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\hljr2\Documents\dojo\mean_stack\socketTuneMe\SocketTuneMe\public\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/jameydogom/Desktop/SocketTuneMe/public/src/main.ts */"./src/main.ts");
 
 
 /***/ }),

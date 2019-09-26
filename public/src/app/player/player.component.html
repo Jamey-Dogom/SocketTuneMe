@@ -3,34 +3,35 @@ logic for retrieving next song and playing it -->
 <!-- <iframe *ngIf="videoID" width="560" height="315" [src]="videoString + videoID + autoPlay | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
 <!-- <youtube-player  *ngIf="videoID"
-[videoId]="videoID" 
+[videoId]="videoID"
 (ready)="savePlayer($event)"
 (change)="onStateChange($event)"
 >
 </youtube-player> -->
 
-<div class="container" *ngIf="videoID">
+<div class="container youtube-player" *ngIf="videoID">
     <section class="panel panel-info">
-     
+
       <div class="panel-body">
-        <youtube-player 
-          [videoId]="videoID" 
-          width="560" 
-          height="315"
+        <youtube-player
+          [videoId]="videoID"
           (ready)="savePlayer($event)"
           (change)="onStateChange($event)"
+          width="750"
+          height="400"
+          
         >
         </youtube-player>
       </div>
     </section>
-    
+
     <div class="col-md-12">
       <div class="btn-group" role="group">
         <button type="button" class="btn btn-default" (click)="playVideo()">Play</button>
         <button type="button" class="btn btn-default" (click)="pauseVideo()">Pause</button>
       </div>
     </div>
-    
+
     <div class="col-md-12">
       <section class="panel panel-success">
         <div class="panel-heading">Player State</div>
