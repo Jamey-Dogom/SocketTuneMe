@@ -19,8 +19,16 @@
 </head>
 
 <body>
-    <div class="container row">
-        <h1 class="center">S<i style="margin-right: -2%;" class="medium material-icons">blur_circular</i> cket Tunes
+
+    <!-- Speaker lookin Div -->
+    <div class="speaker1 bgBlack">
+        <i style="margin-right: -2%;" class="topSpk medium material-icons red-text">blur_circular</i>
+        <i style="margin-right: -2%;" class="botSpk medium material-icons red-text">blur_circular</i>
+    </div>
+
+    <div class="container row bgBlack">
+        <h1 class="center wf">S<i style="margin-right: -2%;" class="medium material-icons red-text">blur_circular</i>
+            cket Tunes
         </h1>
 
         <div class="row box">
@@ -28,26 +36,31 @@
             <div class="box width-45 left">
                 <form (submit)="createParty()">
                     <div>
-                        <label for="">Name your party room:</label>
+                        <label for="">Name your party:</label>
                         <input type="text" name="name" [(ngModel)]="newPlaylist.room">
                     </div>
-                    <button class="btn">Get it started in here</button>
+                    <button class="btn red accent-4">Create Party</button>
                 </form>
             </div>
 
             <!-- Form to join a party -->
-            <div class="box col s5 right">
+            <div class="box width-45 right">
                 <form (submit)="joinParty()">
                     <div>
-                        <label for="">Existing Room:</label>
+                        <label for="">Existing Party:</label>
                         <input type="text" name="name" [(ngModel)]="playlist.room">
                     </div>
-                    <button class="btn">Join the Party</button>
+                    <button class="btn red accent-4">Join Party</button>
                 </form>
             </div>
         </div>
 
+    </div>
 
+    <!-- Speaker lookin Div -->
+    <div class="speaker2 bgBlack">
+        <i style="margin-right: -2%;" class=" topSpk medium material-icons red-text">blur_circular</i>
+        <i style="margin-right: -2%;" class=" botSpk medium material-icons red-text">blur_circular</i>
     </div>
 </body>
 
