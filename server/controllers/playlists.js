@@ -7,7 +7,7 @@ module.exports = {
         Playlist.create(req.body)
             .then(playlist => res.json({ playlist }))
             .catch(err => {
-                const errors = {errors:err.errors};
+                const errors = { errors: err.errors };
                 res.json(errors);
             })
     },
@@ -19,8 +19,30 @@ module.exports = {
     },
 
     getOne(req, res) {
-        Playlist.findById(req.params.id)
+        Playlist.find({ key: req.params.key })
             .then(playlist => res.json({ playlist }))
             .catch(e => res.json({ errors: e }));
+    },
+
+    update(req, res) {
+        Playlist.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true,
+                runValidators: true
+            }
+        )
+            .then(playlist => res.json({ playlist }))
+            .catch(e => {
+                const errors = [];
+
+                for (let key in e.errors) {
+                    errors.push(e.errors[key].message);
+                }
+
+                res.json({ errors })
+            });
+
     }
 }

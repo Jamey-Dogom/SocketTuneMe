@@ -71,7 +71,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>Welcome</title>\n    <!-- Compiled and minified CSS -->\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">\n\n    <!-- Compiled and minified JavaScript -->\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>\n\n    <!-- Icons -->\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <!-- Format to use: <i class=\"material-icons\">add</i> -->\n\n</head>\n\n<body>\n    <div class=\"container row\">\n        <h1 class=\"center\">S<i style=\"margin-right: -2%;\" class=\"medium material-icons\">blur_circular</i> cket Tunes </h1>\n\n        <div class=\"row box\">\n            <!-- Form to create a party -->\n            <div class=\"box width-45 left\">\n                <form (submit)=\"createParty()\">\n                    <div>\n                        <label for=\"\">Name your party:</label>\n                        <input type=\"text\" name=\"name\" [(ngModel)]=\"newPlaylist.key\">\n                    </div>\n                    <button class=\"btn\" >Get it started in here</button>\n                </form>\n            </div>\n\n            <!-- Form to join a party -->\n            <div class=\"box col s5 right\">\n\n            </div>\n        </div>\n\n\n    </div>\n</body>\n\n</html>");
+
+/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n    <title>Welcome</title>\r\n    <!-- Compiled and minified CSS -->\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">\r\n\r\n    <!-- Compiled and minified JavaScript -->\r\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>\r\n\r\n    <!-- Icons -->\r\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\r\n    <!-- Format to use: <i class=\"material-icons\">add</i> -->\r\n\r\n</head>\r\n\r\n<body>\r\n    <div class=\"container row\">\r\n        <h1 class=\"center\">S<i style=\"margin-right: -2%;\" class=\"medium material-icons\">blur_circular</i> cket Tunes </h1>\r\n\r\n        <div class=\"row box\">\r\n            <!-- Form to create a party -->\r\n            <div class=\"box width-45 left\">\r\n                <form (submit)=\"createParty()\">\r\n                    <div>\r\n                        <label for=\"\">Name your party room:</label>\r\n                        <input type=\"text\" name=\"name\" [(ngModel)]=\"newPlaylist.room\">\r\n                    </div>\r\n                    <button class=\"btn\" >Get it started in here</button>\r\n                </form>\r\n            </div>\r\n\r\n            <!-- Form to join a party -->\r\n            <div class=\"box col s5 right\">\r\n\r\n            </div>\r\n        </div>\r\n\r\n\r\n    </div>\r\n</body>\r\n\r\n</html>");
+
 
 /***/ }),
 
@@ -326,7 +328,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: ':key/:socket',
+        path: ':room/:user',
         component: _party_party_component__WEBPACK_IMPORTED_MODULE_3__["PartyComponent"]
     },
     {
@@ -588,16 +590,19 @@ let PartyComponent = class PartyComponent {
         });
     }
     ngOnInit() {
-        // Find and save the playlist based on url
         this._route.params
             .subscribe((params) => {
-            this._httpService.getPlaylist(params.key)
+            this._httpService.getPlaylist(params.room)
                 .subscribe((data) => {
-                // this.playlist = data.playlist[0];
-                this.socketId = params.socket;
+
+                // Find the playlist, assign userID based on url  
+                this.playlist = data.playlist[0];
+                this.userId = params.user;
             });
         });
-        this.searchResults = [];
+        // invoke to join room
+        this.joinRoom();
+
     }
     onSubmit() {
         // let arr = this.newSong.link.split(/[=&]+/);
@@ -605,7 +610,7 @@ let PartyComponent = class PartyComponent {
             this._httpService.createSong({
                 id: this.newSong.link,
                 likes: [],
-                postedBy: this.socketId
+                postedBy: this.userId
             })
                 .subscribe((data) => {
                 console.log("should be a playlist object: ", this.playlist);
@@ -630,6 +635,14 @@ let PartyComponent = class PartyComponent {
             };
         }
     }
+
+    // Emit event to have server place socket into room
+    joinRoom() {
+        this._route.params
+            .subscribe((params) => {
+            this._socket.emit('joinRoom', params.room);
+            console.log(params.room);
+
     makeRequest(q) {
         let self = this;
         console.log("hereeeee");
@@ -687,6 +700,7 @@ let PartyComponent = class PartyComponent {
             $.each(data["data"], function (index, value) {
                 self.makeRequest(value["name"]);
             });
+
         });
     }
 };
@@ -819,49 +833,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../http.service */ "./src/app/http.service.ts");
-/* harmony import */ var ngx_socket_io__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-socket-io */ "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 
 
-
-// Bringing in The Socket
 
 // Routing 
 
 let WelcomeComponent = class WelcomeComponent {
-    constructor(_httpService, _socket, _router) {
+    constructor(_httpService, _router) {
         this._httpService = _httpService;
-        this._socket = _socket;
         this._router = _router;
         // Playlist to be created
         this.newPlaylist = {
             songs: [],
             host: null,
-            key: '',
+            room: '',
         };
     }
     ngOnInit() {
-        this.getId();
     }
     // Create a new party
     createParty() {
-        this.newPlaylist.host = this.socketId;
+        // Assigns a random string to ID the user
+        const user = this.ID();
+        this.newPlaylist.host = user;
         this._httpService.createPlaylist(this.newPlaylist)
             .subscribe((playlist) => {
-            this._router.navigate([`/${this.newPlaylist.key}/${this.socketId}`]);
+            this._router.navigate([`/${this.newPlaylist.room}/${user}`]);
         });
     }
-    getId() {
-        this._socket.fromEvent('logIn')
-            .subscribe((data) => {
-            this.socketId = data.ip.port;
-        });
+    // Create Unique ID
+    ID() {
+        return '_' + Math.random().toString(36).substr(2, 9);
     }
 };
 WelcomeComponent.ctorParameters = () => [
     { type: _http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"] },
-    { type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_3__["Socket"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
 ];
 WelcomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
-// Bringing in The Socket
-import { Socket } from 'ngx-socket-io';
 // Routing 
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
@@ -15,38 +13,37 @@ export class WelcomeComponent implements OnInit {
   newPlaylist = {
     songs: [],
     host: null,
-    key: '',
+    room: '',
   }
 
   // Users ID
-  socketId;
+  socketId: String;
 
   constructor(
     private _httpService: HttpService,
-    private _socket: Socket,
     private _router: Router
   ) { }
 
   ngOnInit() {
-    this.getId();
 
   }
 
   // Create a new party
   createParty() {
-    this.newPlaylist.host = this.socketId;
+    // Assigns a random string to ID the user
+    const user = this.ID();
+    this.newPlaylist.host = user;
     this._httpService.createPlaylist(this.newPlaylist)
-      .subscribe((playlist:any) => {
-        this._router.navigate([`/${this.newPlaylist.key}/${this.socketId}`]);
-      })
-
+      .subscribe((playlist: any) => { 
+          this._router.navigate([`/${ this.newPlaylist.room }/${ user }`]);
+      });
   }
 
-  getId() {
-    this._socket.fromEvent('logIn')
-      .subscribe((data: any) => {
-        this.socketId = data.ip.port;
-      });
+  
+
+  // Create Unique ID
+  ID(){
+    return '_' + Math.random().toString(36).substr(2,9);
   }
 
 }

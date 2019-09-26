@@ -1,15 +1,9 @@
 const mongoose = require('mongoose');
 
 const SongSchema = new mongoose.Schema({
-
-    name: {
-        type: String,
-        required: [true, "Missing a name."]
-    },
-
     likes: [],
 
-    link: {
+    id: {
         type: String,
         required: [true, "Need a Link."]
     },
@@ -28,11 +22,11 @@ const PlaylistSchema = new mongoose.Schema({
         type: String,
         required: [true, "Who is the Host?"]
     },
-    key: {
+    room: {
         type: String,
         required: [
             true,
-            "Please Enter a Key."
+            "Please Enter a room name."
         ]
     },
 }, { timestamps: true })
