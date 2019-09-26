@@ -20,7 +20,8 @@
 
 <body>
     <div class="container row">
-        <h1 class="center">S<i style="margin-right: -2%;" class="medium material-icons">blur_circular</i> cket Tunes </h1>
+        <h1 class="center">S<i style="margin-right: -2%;" class="medium material-icons">blur_circular</i> cket Tunes
+        </h1>
 
         <div class="row box">
             <!-- Form to create a party -->
@@ -30,13 +31,19 @@
                         <label for="">Name your party room:</label>
                         <input type="text" name="name" [(ngModel)]="newPlaylist.room">
                     </div>
-                    <button class="btn" >Get it started in here</button>
+                    <button class="btn">Get it started in here</button>
                 </form>
             </div>
 
             <!-- Form to join a party -->
             <div class="box col s5 right">
-
+                <form (submit)="joinParty()">
+                    <div>
+                        <label for="">Existing Room:</label>
+                        <input type="text" name="name" [(ngModel)]="playlist.room">
+                    </div>
+                    <button class="btn">Join the Party</button>
+                </form>
             </div>
         </div>
 

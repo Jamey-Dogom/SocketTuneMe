@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 // Routing 
 import { ActivatedRoute, Params, Router } from '@angular/router';
+// Bringing in The Socket
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-welcome',
@@ -9,6 +11,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+  // Socket ID
+  user;
+
   // Playlist to be created
   newPlaylist = {
     songs: [],
@@ -16,34 +21,38 @@ export class WelcomeComponent implements OnInit {
     room: '',
   }
 
-  // Users ID
-  socketId: String;
+  // Playlist to join
+  playlist = {
+    room: '',
+  }
 
   constructor(
     private _httpService: HttpService,
-    private _router: Router
+    private _router: Router,
+    private _socket: Socket
   ) { }
 
   ngOnInit() {
+    this.grabID();
 
   }
 
   // Create a new party
   createParty() {
-    // Assigns a random string to ID the user
-    const user = this.ID();
-    this.newPlaylist.host = user;
+    this.newPlaylist.host = this.user
     this._httpService.createPlaylist(this.newPlaylist)
-      .subscribe((playlist: any) => { 
-          this._router.navigate([`/${ this.newPlaylist.room }/${ user }`]);
+      .subscribe((playlist: any) => {
+        this._socket.emit("NewPlaylist",  playlist );
+        this._router.navigate(["/partyroom"]);
       });
   }
 
-  
-
-  // Create Unique ID
-  ID(){
-    return '_' + Math.random().toString(36).substr(2,9);
+  // Save ID for user
+  grabID() {
+    this._socket.on("log", (data) => {
+      this.user = data.id;
+      console.log(data.msg + ' ' + data.id);
+    });
   }
 
 }

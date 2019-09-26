@@ -17,20 +17,21 @@ import { CombineLatestOperator } from 'rxjs/internal/observable/combineLatest';
 export class PartyComponent implements OnInit {
   playlist = null;
   search = {
-    query : ''
+    query: ''
   }
 
   weGotResults = false;
 
   searchResults = []
 
-  gapi : any;
+  gapi: any;
 
   newSong = {
     link: ""
   }
 
   SongId = null;
+  // UserId is the Sockets ID
   userId;
   playing = false;
 
@@ -40,30 +41,22 @@ export class PartyComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute,
     private gapiService: GoogleApiService
-  ) { 
+  ) {
     gapiService.onLoad().subscribe(() => {
       // Here we can use gapi
       gapi['client'].setApiKey('API KEY');
-         });
+    });
   }
 
 
   ngOnInit() {
-    this._route.params
-      .subscribe((params: Params) => {
-        this._httpService.getPlaylist(params.room)
-          .subscribe((data: any) => {
-
-
-            // Find the playlist, assign userID based on url  
-            this.playlist = data.playlist[0];
-            this.userId = params.user;
-
-          });
-      })
-    
-    // invoke to join room
-    this.joinRoom();
+    // Grab User ID and Playlist from server
+    this._socket.emit("SendID");
+    this._socket.on("hereBro", (data) => {
+      this.userId = data.id;
+      this.playlist = data.playlist;
+      console.log(data);
+    })
 
   }
 
@@ -99,14 +92,12 @@ export class PartyComponent implements OnInit {
     }
   }
 
-
-  // Emit event to have server place socket into room
-  joinRoom() {
-    this._route.params
-      .subscribe((params: Params) => {
-        this._socket.emit('joinRoom',  params.room );
-        console.log(params.room);
-      });
+  sayHello() {
+    //   this._socket.emit("Introduce", {
+    //     msg: `Hello user #: ${this.userId} is here.`,
+    //     room: this.playlist.room
+    //   })
+    console.log(this.playlist)
   }
 
   makeRequest(q) {
@@ -115,69 +106,69 @@ export class PartyComponent implements OnInit {
     this.weGotResults = true
     this.searchResults = []
     var request = gapi['client']['youtube'].search.list({
-        q: q,
-        part: 'snippet',
-        maxResults: 10,
-        type : 'video'
+      q: q,
+      part: 'snippet',
+      maxResults: 10,
+      type: 'video'
     });
 
     // console.log("hi")
-    request.execute(function(response)  {
+    request.execute(function (response) {
       console.log("also here")
-        var srchItems = response.result.items;
-        // self.searchResults = self.searchResults.concat(srchItems);
-        $('#results').empty()
-        self.newSong.link = ''
-        let counter = 1
-        $.each(srchItems, function(index, item){
-            let vidTitle = item.snippet.title
-            let vidThumburl =  item.snippet.thumbnails.default.url;
-            let vidThumbimg = '<pre><img  id="'+item.id.videoId+'" name="'+item.snippet.title+'" src="'+vidThumburl+'" alt="No  Image Available." style="width:300px;height:240px"></pre>'
+      var srchItems = response.result.items;
+      // self.searchResults = self.searchResults.concat(srchItems);
+      $('#results').empty()
+      self.newSong.link = ''
+      let counter = 1
+      $.each(srchItems, function (index, item) {
+        let vidTitle = item.snippet.title
+        let vidThumburl = item.snippet.thumbnails.default.url;
+        let vidThumbimg = '<pre><img  id="' + item.id.videoId + '" name="' + item.snippet.title + '" src="' + vidThumburl + '" alt="No  Image Available." style="width:300px;height:240px"></pre>'
 
-            $(`#results${counter}`).append('<pre>' + '<p style = "color: white">' + vidTitle + '</p>' + vidThumbimg +  '</pre>').on('click', function(){
-              console.log(vidTitle);
-              $("#videoInput").val(item.id.videoId);
-              self.newSong.link = item.id.videoId
-            });
-            counter += 1;
-        })
-      });
-    }
-    
+        $(`#results${counter}`).append('<pre>' + '<p style = "color: white">' + vidTitle + '</p>' + vidThumbimg + '</pre>').on('click', function () {
+          console.log(vidTitle);
+          $("#videoInput").val(item.id.videoId);
+          self.newSong.link = item.id.videoId
+        });
+        counter += 1;
+      })
+    });
+  }
 
-triggerEvent() {
-  console.log("suhhhh")
+
+  triggerEvent() {
+    console.log("suhhhh")
     // var target = event.target || event.srcElement || event.currentTarget;
     // var idAttr = target.attributes.id;
     // console.log(idAttr);
-}
+  }
 
-    myFunction() {
-      console.log(this.search.query)
-      console.log(window['gapi']) 
-      this.keyWordsearch(this.search.query);
-    };
+  myFunction() {
+    console.log(this.search.query)
+    console.log(window['gapi'])
+    this.keyWordsearch(this.search.query);
+  };
 
-      keyWordsearch(name){
+  keyWordsearch(name) {
+    console.log("here");
+
+    let self = this
+
+    gapi['client'].load('youtube', 'v3', function () {
       console.log("here");
-
-      let self = this
-      
-      gapi['client'].load('youtube', 'v3', function() {
-        console.log("here");
-          let info = '{ "data": [{"name":' +  `"${name}"` + '}] }';
-          console.log(info);
-          JSON.stringify(info);
-          console.log(info);
-          let data = JSON.parse( info );
-          $.each(data["data"], function( index, value ) {
-              self.makeRequest(value["name"]);
-          });
-        
+      let info = '{ "data": [{"name":' + `"${name}"` + '}] }';
+      console.log(info);
+      JSON.stringify(info);
+      console.log(info);
+      let data = JSON.parse(info);
+      $.each(data["data"], function (index, value) {
+        self.makeRequest(value["name"]);
       });
-      
-    }
-  
-    
-} 
+
+    });
+
+  }
+
+
+}
 
