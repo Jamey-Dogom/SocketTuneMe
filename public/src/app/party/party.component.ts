@@ -55,10 +55,19 @@ export class PartyComponent implements OnInit {
     this._socket.on("hereBro", (data) => {
       this.userId = data.id;
       this.playlist = data.playlist;
-      console.log(data);
+      console.log("Getting ID and Playlist",data);
     })
 
   }
+
+  greetRoom(){
+    this._socket.emit("greetRoom", { msg: "Hello everyone" });
+
+    this._socket.on("Greeting", (data) => {
+      console.log(data);
+    })
+  }
+
 
   onSubmit() {
     // let arr = this.newSong.link.split(/[=&]+/);
@@ -90,14 +99,6 @@ export class PartyComponent implements OnInit {
         link: ''
       }
     }
-  }
-
-  sayHello() {
-    //   this._socket.emit("Introduce", {
-    //     msg: `Hello user #: ${this.userId} is here.`,
-    //     room: this.playlist.room
-    //   })
-    console.log(this.playlist)
   }
 
   makeRequest(q) {

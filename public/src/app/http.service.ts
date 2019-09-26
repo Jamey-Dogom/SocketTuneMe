@@ -12,12 +12,12 @@ export class HttpService {
     return this._http.post('/api/playlist', playlist);
   }
 
-  getPlaylist(key) {
-    return this._http.get('/api/playlist/' + key );
+  getPlaylist(room) {
+    return this._http.get('/api/playlist/' + room );
   }
 
   updatePlaylist(playlist) {
-    return this._http.put(`/api/playlist/${playlist.key}`, playlist);
+    return this._http.put(`/api/playlist/${playlist.id}`, playlist);
   }
 
   deletePlaylist(id){

@@ -41,10 +41,22 @@ export class WelcomeComponent implements OnInit {
   createParty() {
     this.newPlaylist.host = this.user
     this._httpService.createPlaylist(this.newPlaylist)
-      .subscribe((playlist: any) => {
-        this._socket.emit("NewPlaylist",  playlist );
+      .subscribe((data: any) => {
+        console.log("Newly Playlist: ",data.playlist);
+        this._socket.emit("NewPlaylist",  data.playlist );
         this._router.navigate(["/partyroom"]);
       });
+  }
+
+  // Join Party
+  joinParty(){
+    this._httpService.getPlaylist(this.playlist.room)
+      .subscribe((data: any) => {
+        // Once the data is recieved from the db, is sent to server to be stored
+        this._socket.emit("NewPlaylist",  data.playlist[0] );
+        // console.log("Clean: ",data.playlist[0]);
+        this._router.navigate(["/partyroom"]);
+      })
   }
 
   // Save ID for user

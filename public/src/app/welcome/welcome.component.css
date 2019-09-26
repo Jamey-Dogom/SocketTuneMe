@@ -1,10 +1,6 @@
 .box {
-    outline: 2px solid blue;
+    /* outline: 2px solid blue; */
     padding: 2%;
-  }
-
-.higher {
-      margin-top: -2%;
   }
 
 .mid {
@@ -17,4 +13,54 @@ i.material-icons , i.material-icons + span {
 
 .width-45 {
     width: 45%;
+}
+
+.middle {
+  margin: 0 auto;
+}
+
+.bgBlack {
+  background-color: black;
+}
+
+.bgWhite {
+  background-color: white;
+}
+
+.red {
+  background-color: #d50000; 
+}
+
+.wf {
+  color: white;
+}
+
+.speaker1 {
+  position: absolute;
+  left: 2%;
+  height: 25%;
+  top: 20%;
+  outline: 2px solid black;
+  width: 5%;
+}
+
+.speaker2 {
+  position: absolute;
+  left: 93%;
+  height: 25%;
+  top: 20%;
+  outline: 2px solid black;
+  width: 5%;
+}
+
+.topSpk {
+  position: relative;
+  top: 12%;
+  left: 5%;
+}
+
+.botSpk {
+  position: relative;
+  left: 5%;
+  top: 24%;
 }
