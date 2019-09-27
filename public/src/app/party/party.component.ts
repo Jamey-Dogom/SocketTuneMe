@@ -46,7 +46,7 @@ export class PartyComponent implements OnInit {
   ) {
     gapiService.onLoad().subscribe(() => {
       // Here we can use gapi
-      gapi['client'].setApiKey('AIzaSyAStWnWGpBLHOiAJNM2KCwvME9yZmiY_SY');
+      gapi['client'].setApiKey('AIzaSyDiHCKuqXBvB4rJBIIhP6GMr55A7o3Fj-8');
     });
   }
 
@@ -90,7 +90,9 @@ export class PartyComponent implements OnInit {
         link: '',
         name : ''
       }
-
+      if(nextUp.name != ''){
+        this.allPlaylistSongs.push(nextUp);
+      }
      
 
       try{
@@ -100,18 +102,13 @@ export class PartyComponent implements OnInit {
         this._socket.on("updated", (data : any) => {
           this.playlist = data;
           console.log("new playlist", this.playlist)
-         
+
         });
       }
       catch(e) {
           console.log(e)
       }
-
-      if(nextUp.name != ''){
-        // this.allPlaylistSongs.push(nextUp);
-        self.allPlaylistSongs = this.playlist.songs
-      }
-     
+      
 
         // this will send the playlist to the server
      
@@ -220,13 +217,12 @@ export class PartyComponent implements OnInit {
 
   }
 
-
   playTheNextSong(currState){
     console.log("HERE")
+    this.SongId = null;
     if(currState== 0){
       if(this.allPlaylistSongs.length != 0){
         console.log(this.allPlaylistSongs[0].id)
-        this.SongId = null;
         this.SongId = this.allPlaylistSongs[0].id
         this.playing = true;
         this.allPlaylistSongs.shift();
