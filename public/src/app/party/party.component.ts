@@ -8,7 +8,6 @@ import { Subscriber } from 'rxjs';
 import { GoogleApiService } from 'ng-gapi/lib/GoogleApiService';
 import { CombineLatestOperator } from 'rxjs/internal/observable/combineLatest';
 
-
 @Component({
   selector: 'app-party',
   templateUrl: './party.component.html',
@@ -20,6 +19,8 @@ export class PartyComponent implements OnInit {
     query: ''
   }
 
+  allPlaylistSongs = []
+
   weGotResults = false;
 
   searchResults = []
@@ -27,7 +28,8 @@ export class PartyComponent implements OnInit {
   gapi: any;
 
   newSong = {
-    link: ""
+    link: "",
+    name: ""
   }
 
   SongId = null;
@@ -44,10 +46,9 @@ export class PartyComponent implements OnInit {
   ) {
     gapiService.onLoad().subscribe(() => {
       // Here we can use gapi
-      gapi['client'].setApiKey('API KEY');
+      gapi['client'].setApiKey('AIzaSyAStWnWGpBLHOiAJNM2KCwvME9yZmiY_SY');
     });
   }
-
 
   ngOnInit() {
     // Grab User ID and Playlist from server
@@ -57,48 +58,96 @@ export class PartyComponent implements OnInit {
       this.playlist = data.playlist;
       console.log("Getting ID and Playlist",data);
     })
-
   }
 
   greetRoom(){
     this._socket.emit("greetRoom", { msg: "Hello everyone" });
-
     this._socket.on("Greeting", (data) => {
       console.log(data);
     })
   }
 
-
   onSubmit() {
-    // let arr = this.newSong.link.split(/[=&]+/);
+    // if there is a song playing 
+    // add the song the playlist songs[]
 
+    // send the server to emit to everyone
+    // in the room that a new song was added
+
+    // update the playlist in mongo with new song
+    let self = this
+  
+
+      // check if there is a song playing
     if (this.playing) {
-      this._httpService.createSong({
-        id: this.newSong.link,
-        likes: [],
-        postedBy: this.userId
-      })
-        .subscribe((data: any) => {
-          console.log("should be a playlist object: ", this.playlist);
-          this.playlist.songs.push(data);
-          console.log("should be a playlist object 2: ", this.playlist);
-          this._httpService.updatePlaylist(this.playlist)
-            .subscribe((data: any) => {
-              console.log(data)
-            });
-        })
-      this.newSong = {
-        link: ''
+      console.log("something is playing")
+      let nextUp = {
+        id : this.newSong.link,
+        name : this.newSong.name,
+        likes : 0
       }
-      this._httpService.updatePlaylist(this.playlist)
-        .subscribe(playlist => console.log(playlist));
-    } else {
+      this.newSong = {
+        link: '',
+        name : ''
+      }
+
+     
+
+      try{
+        console.log(self.playlist)
+        self.playlist.songs.push(nextUp);
+        this._socket.emit("updatePlaylist", this.playlist);
+        this._socket.on("updated", (data : any) => {
+          this.playlist = data;
+          console.log("new playlist", this.playlist)
+         
+        });
+      }
+      catch(e) {
+          console.log(e)
+      }
+
+      if(nextUp.name != ''){
+        // this.allPlaylistSongs.push(nextUp);
+        self.allPlaylistSongs = this.playlist.songs
+      }
+     
+
+        // this will send the playlist to the server
+     
+
+      // this._httpService.createSong({
+      //   id: this.newSong.link,
+      //   likes: [],
+      //   postedBy: this.userId
+      // })
+      //   .subscribe((data: any) => {
+      //     console.log("should be a playlist object: ", this.playlist);
+      //     this.playlist.songs.push(data);
+      //     console.log("should be a playlist object 2: ", this.playlist);
+      //     this._httpService.updatePlaylist(this.playlist)
+      //       .subscribe((data: any) => {
+      //         console.log(data)
+      //       });
+      //   })
+      // this.newSong = {
+      //   link: ''
+      // }
+      // this._httpService.updatePlaylist(this.playlist)
+      //   .subscribe(playlist => console.log(playlist));
+    } 
+     // if not play the song - dont append the playlist and play song
+    else {
       this.SongId = this.newSong.link;
       this.playing = true;
       this.newSong = {
-        link: ''
+        link: '',
+        name : ''
       }
     }
+  //  clear the input field
+
+  //   set new song link to empty
   }
 
   makeRequest(q) {
@@ -128,8 +177,9 @@ export class PartyComponent implements OnInit {
 
         $(`#results${counter}`).append('<pre>' + '<p style = "color: white">' + vidTitle + '</p>' + vidThumbimg + '</pre>').on('click', function () {
           console.log(vidTitle);
-          $("#videoInput").val(item.id.videoId);
+          $("#videoInput").val(item.snippet.title);
           self.newSong.link = item.id.videoId
+          self.newSong.name = item.snippet.title
         });
         counter += 1;
       })
@@ -168,6 +218,20 @@ export class PartyComponent implements OnInit {
 
     });
 
+  }
+
+
+  playTheNextSong(currState){
+    console.log("HERE")
+    if(currState== 0){
+      if(this.allPlaylistSongs.length != 0){
+        console.log(this.allPlaylistSongs[0].id)
+        this.SongId = null;
+        this.SongId = this.allPlaylistSongs[0].id
+        this.playing = true;
+        this.allPlaylistSongs.shift();
+      }
+    }
   }
 
 

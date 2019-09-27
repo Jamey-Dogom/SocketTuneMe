@@ -25,13 +25,13 @@ io.on('connection', function (socket) {
     socket.emit("log", { msg: "Here is the ID: ", id: socket.id })
 
     // catch greeting to room
-    socket.on('Introduce', (data) => {
-        console.log(data);
+    socket.on("greetRoom", (data) => {
+        io.in(this.PL.room).emit("Greeting", data);
     })
 
     // Save the playlist object in PL Variable
     socket.on("NewPlaylist", (data) => {
-        PL = data.playlist;
+        PL = data;
         console.log(data);
     });
 
@@ -39,7 +39,14 @@ io.on('connection', function (socket) {
     socket.on("SendID", () => {
         socket.emit("hereBro", { id: socket.id, playlist:  PL });
     });
-
+    let self = this
+    // Recieve updated playlist from client
+    socket.on("updatePlaylist", (data) => {
+        
+        console.log("Should be updated Playlist: ", data);
+        self.PL = data;
+        io.in(this.PL.room).emit("updated", this.PL);
+    })
     
 
 

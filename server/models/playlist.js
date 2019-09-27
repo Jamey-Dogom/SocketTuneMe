@@ -17,7 +17,7 @@ const SongSchema = new mongoose.Schema({
 mongoose.model("Song", SongSchema);
 
 const PlaylistSchema = new mongoose.Schema({
-    songs: [SongSchema],
+    songs: [],
     host: {
         type: String,
         required: [true, "Who is the Host?"]

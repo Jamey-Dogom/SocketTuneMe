@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<router-outlet></router-outlet>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<router-outlet></router-outlet>\n");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\r\n<html>\r\n<meta charset=\"UTF-8\">\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n<script src=\"https://apis.google.com/js/client.js?onload=handleClientLoad\"></script>\r\n<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js\"></script>\r\n<script src=\"https://apis.google.com/js/client.js?onload=googleApiClientReady\"></script>\r\n<script src=\"jquery-3.4.1.min.js\"></script>\r\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>\r\n<script src=\"//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js\"></script>\r\n<link href=\"https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap\" rel=\"stylesheet\">\r\n<script src=\"https://code.jquery.com/jquery-3.4.1.js\" integrity=\"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=\"\r\n  crossorigin=\"anonymous\"></script>\r\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js\"></script>\r\n<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n  integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\r\n\r\n<body class=\"p-4\">\r\n  <button (click)=\"greetRoom()\">Greet</button>\r\n  <div class=\"mx-auto p-0\">\r\n    <div class=\"row\">\r\n      <div class=\"col-3\">\r\n      <div class=\"container\"><h3><span style=\"color: #DC3545\">S</span>ongs</h3></div>\r\n      <div class=\"card mb-4 shadow-lg\" style=\"background-color: black\">\r\n        <div class=\"card-header\">\r\n            <form (submit)=\"myFunction()\">\r\n                <div class=\"input-group\">\r\n                    <input class=\"form-control mx-auto d-inline-block\" name=\"query\"\r\n                    [(ngModel)]=\"search.query\" type=\"text\" placeholder=\"Look for Songs\" />\r\n                    <div class=\"input-group-append\">\r\n                      <button type=\"submit\" class=\"btn btn-danger\">Find</button>\r\n                    </div>\r\n                  </div>\r\n              </form>\r\n            <div class=\"overflow-auto\" *ngIf=\"search.query\">\r\n              <!-- <div id =\"results\"> -->\r\n                  <div id =\"results1\"></div>\r\n                  <div id =\"results2\"></div>\r\n                  <div id =\"results3\"></div>\r\n                  <div id =\"results4\"></div>\r\n                  <div id =\"results5\"></div>\r\n                  <div id =\"results6\"></div>\r\n                  <div id =\"results7\"></div>\r\n                  <div id =\"results8\"></div>\r\n                  <div id =\"results9\"></div>\r\n                  <div id =\"results10\"></div>\r\n\r\n              <!-- </div> -->\r\n                <!-- <div id=\"results\" *ngFor=\"let result of searchResults\">\r\n                  <p style = \"color:white\">{{result.snippet.title}}</p>\r\n                </div> -->\r\n            </div>\r\n\r\n          <!-- <form #form action=\"http://www.youtube.com/results\" method=\"get\" target=\"_blank\">\r\n            <div class=\"input-group\">\r\n              <input class=\"form-control mx-auto d-inline-block\" name=\"search_query\" type=\"text\" placeholder=\"Look for Playlists\" />\r\n              <div class=\"input-group-append\">\r\n                <button type=\"submit\" class=\"btn btn-danger\" (click)=\"form.submit()\">Find</button>\r\n              </div>\r\n            </div>\r\n          </form> -->\r\n\r\n        </div>\r\n       <div class=\"speaker-body card-body\">\r\n       <div *ngIf=\"!search.query\">\r\n          <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 5vh\"></div>\r\n          <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh;\"></div>\r\n          <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 15vh\"></div>\r\n          <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh; background-color: black;\"></div>\r\n        </div>\r\n       </div>\r\n      </div>\r\n      </div>\r\n      <div class=\"col-6\">\r\n        <div class=\"container\">\r\n          <p *ngIf=\"userIP\" >{{ userIP }}</p>\r\n          <h2><span style=\"color: #DC3545\">Socket</span>Tunez</h2>\r\n          <!--  music player component --------------------------------------------------------------------->\r\n          <div class=\"screen\"><app-player *ngIf=\"SongId\" [videoID]=\"SongId\"></app-player></div>\r\n          <div class=\"insert\">\r\n            <h3>Insert that next 🔥 track</h3>\r\n            <!--  form for song submission -->\r\n            <form (submit)=\"onSubmit()\">\r\n              <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control music-insert mx-auto\" id = \"videoInput\" name=\"link\" placeholder=\"Fire Tracks Only\"\r\n                       [(ngModel)]=\"newSong.link\">\r\n              </div>\r\n              <button type=\"submit\" class=\"btn btn-danger\">Add</button>\r\n            </form>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-lg-12\" *ngFor=\"let song of allSongs;\">\r\n              <div class=\"card text-white bg-dark\" style=\"max-width: 40rem;\">\r\n                <div class=\"card-header\">{{song}} <span class=\"font-size: 18px\">👍</span> </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-3\">\r\n        <div class=\"container\"><h3><span style=\"color: #DC3545\">P</span>laylists</h3></div>\r\n        <div class=\"card mb-4 shadow-lg\" style=\"background-color: black\">\r\n          <div class=\"card-header\">\r\n           \r\n              <div class=\"input-group\">\r\n                \r\n                <div class=\"input-group-append\">\r\n                  \r\n                </div>\r\n              </div>\r\n   \r\n          </div>\r\n          <div class=\"speaker-body card-body\">\r\n            <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 5vh\"></div>\r\n            <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh;\"></div>\r\n            <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 15vh\"></div>\r\n            <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh; background-color: black;\"></div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</body>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\n<html>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n<script src=\"https://apis.google.com/js/client.js?onload=handleClientLoad\"></script>\n<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js\"></script>\n<script src=\"https://apis.google.com/js/client.js?onload=googleApiClientReady\"></script>\n<script src=\"jquery-3.4.1.min.js\"></script>\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>\n<script src=\"//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js\"></script>\n<link href=\"https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap\" rel=\"stylesheet\">\n<script src=\"https://code.jquery.com/jquery-3.4.1.js\" integrity=\"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=\"\n  crossorigin=\"anonymous\"></script>\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js\"></script>\n<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\n  integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n\n<body class=\"p-4\">\n  <button (click)=\"greetRoom()\">Greet</button>\n  <div class=\"mx-auto p-0\">\n    <div class=\"row\">\n      <div class=\"col-3\">\n      <div class=\"container\"><h3><span style=\"color: #DC3545\">S</span>ongs</h3></div>\n      <div class=\"card mb-4 shadow-lg\" style=\"background-color: black\">\n        <div class=\"card-header\">\n            <form (submit)=\"myFunction()\">\n                <div class=\"input-group\">\n                    <input class=\"form-control mx-auto d-inline-block\" name=\"query\"\n                    [(ngModel)]=\"search.query\" type=\"text\" placeholder=\"Look for Songs\" />\n                    <div class=\"input-group-append\">\n                      <button type=\"submit\" class=\"btn btn-danger\">Find</button>\n                    </div>\n                  </div>\n              </form>\n            <div class=\"overflow-auto\" *ngIf=\"search.query\">\n              <!-- <div id =\"results\"> -->\n                  <div id =\"results1\"></div>\n                  <div id =\"results2\"></div>\n                  <div id =\"results3\"></div>\n                  <div id =\"results4\"></div>\n                  <div id =\"results5\"></div>\n                  <div id =\"results6\"></div>\n                  <div id =\"results7\"></div>\n                  <div id =\"results8\"></div>\n                  <div id =\"results9\"></div>\n                  <div id =\"results10\"></div>\n\n              <!-- </div> -->\n                <!-- <div id=\"results\" *ngFor=\"let result of searchResults\">\n                  <p style = \"color:white\">{{result.snippet.title}}</p>\n                </div> -->\n            </div>\n\n          <!-- <form #form action=\"http://www.youtube.com/results\" method=\"get\" target=\"_blank\">\n            <div class=\"input-group\">\n              <input class=\"form-control mx-auto d-inline-block\" name=\"search_query\" type=\"text\" placeholder=\"Look for Playlists\" />\n              <div class=\"input-group-append\">\n                <button type=\"submit\" class=\"btn btn-danger\" (click)=\"form.submit()\">Find</button>\n              </div>\n            </div>\n          </form> -->\n\n        </div>\n       <div class=\"speaker-body card-body\">\n       <div *ngIf=\"!search.query\">\n          <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 5vh\"></div>\n          <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh;\"></div>\n          <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 15vh\"></div>\n          <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh; background-color: black;\"></div>\n        </div>\n       </div>\n      </div>\n      </div>\n      <div class=\"col-6\">\n        <div class=\"container\">\n          <p *ngIf=\"userIP\" >{{ userIP }}</p>\n          <h2><span style=\"color: #DC3545\">Socket</span>Tunez</h2>\n          <!--  music player component --------------------------------------------------------------------->\n          <h1>{{SongId}}</h1>\n          <div class=\"screen\"><app-player (playTheNextSong)=\"playTheNextSong($event)\" *ngIf=\"SongId\" [videoID]=\"SongId\"></app-player></div>\n          <div class=\"insert\">\n            <h3>Insert that next 🔥 track</h3>\n            <!--  form for song submission -->\n            <form (submit)=\"onSubmit()\">\n              <div class=\"form-group\">\n                <input type=\"text\" class=\"form-control music-insert mx-auto\" id = \"videoInput\" name=\"link\" placeholder=\"Fire Tracks Only\"\n                       [(ngModel)]=\"newSong.link\">\n              </div>\n              <button type=\"submit\" class=\"btn btn-danger\">Add</button>\n            </form>\n          </div>\n          <div class=\"row\">\n            <div class=\"col-lg-12\" *ngFor=\"let song of allSongs;\">\n              <div class=\"card text-white bg-dark\" style=\"max-width: 40rem;\">\n                <div class=\"card-header\">{{song}} <span class=\"font-size: 18px\">👍</span> </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-3\">\n        <div class=\"container\"><h3><span style=\"color: #DC3545\">P</span>laylists</h3></div>\n        <div class=\"card mb-4 shadow-lg\" style=\"background-color: black\">\n          <div class=\"card-header\">\n           \n              <div class=\"input-group\">\n                \n                <div class=\"input-group-append\">\n                  <div class=\"card\" style=\"width: 33rem; font-size: 14px\">\n                    <ul class=\"list-group list-group-flush\">\n                      <li class=\"list-group-item\" *ngFor=\"let song of allPlaylistSongs\">\n                        {{song.name}}\n\n                      </li>\n                    \n                    </ul>\n                  </div>\n                </div>\n              </div>\n   \n          </div>\n          <div class=\"speaker-body card-body\">\n            <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 5vh\"></div>\n            <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh;\"></div>\n            <div class=\"speaker-hole-1 mx-auto mb-0\" style=\"margin-top: 15vh\"></div>\n            <div class=\"speaker-hole-2 mx-auto\" style=\"margin-top: -19vh; background-color: black;\"></div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</body>\n\n");
 
 /***/ }),
 
@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- component responsible for playing current song\r\nlogic for retrieving next song and playing it -->\r\n<!-- <iframe *ngIf=\"videoID\" width=\"560\" height=\"315\" [src]=\"videoString + videoID + autoPlay | safe\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe> -->\r\n\r\n<!-- <youtube-player  *ngIf=\"videoID\"\r\n[videoId]=\"videoID\"\r\n(ready)=\"savePlayer($event)\"\r\n(change)=\"onStateChange($event)\"\r\n>\r\n</youtube-player> -->\r\n\r\n<div class=\"container youtube-player\" *ngIf=\"videoID\">\r\n    <section class=\"panel panel-info\">\r\n\r\n      <div class=\"panel-body\">\r\n        <youtube-player\r\n          [videoId]=\"videoID\"\r\n          (ready)=\"savePlayer($event)\"\r\n          (change)=\"onStateChange($event)\"\r\n          width=\"750\"\r\n          height=\"400\"\r\n          \r\n        >\r\n        </youtube-player>\r\n      </div>\r\n    </section>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"btn-group\" role=\"group\">\r\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"playVideo()\">Play</button>\r\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"pauseVideo()\">Pause</button>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"col-md-12\">\r\n      <section class=\"panel panel-success\">\r\n        <div class=\"panel-heading\">Player State</div>\r\n        <div class=\"panel-body\">\r\n          <pre>{{ ytEvent }}</pre>\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- component responsible for playing current song\nlogic for retrieving next song and playing it -->\n<!-- <iframe *ngIf=\"videoID\" width=\"560\" height=\"315\" [src]=\"videoString + videoID + autoPlay | safe\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe> -->\n\n<!-- <youtube-player  *ngIf=\"videoID\"\n[videoId]=\"videoID\"\n(ready)=\"savePlayer($event)\"\n(change)=\"onStateChange($event)\"\n>\n</youtube-player> -->\n\n<div class=\"container youtube-player\" *ngIf=\"videoID\">\n    <section class=\"panel panel-info\">\n\n      <div class=\"panel-body\">\n        {{videoID}}\n        <youtube-player\n          [videoId]=\"videoID\"\n          (ready)=\"savePlayer($event)\"\n          (change)=\"onStateChange($event)\"\n          width=\"750\"\n          height=\"400\"\n          \n        >\n        </youtube-player>\n      </div>\n    </section>\n\n    <div class=\"col-md-12\">\n      <div class=\"btn-group\" role=\"group\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"playVideo()\">Play</button>\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"pauseVideo()\">Pause</button>\n      </div>\n    </div>\n\n    <div class=\"col-md-12\">\n      <section class=\"panel panel-success\">\n        <div class=\"panel-heading\">Player State</div>\n        <div class=\"panel-body\">\n          <pre>{{ ytEvent }}</pre>\n        </div>\n      </section>\n    </div>\n  </div>\n");
 
 /***/ }),
 
@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n    <title>Welcome</title>\r\n    <!-- Compiled and minified CSS -->\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">\r\n\r\n    <!-- Compiled and minified JavaScript -->\r\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>\r\n\r\n    <!-- Icons -->\r\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\r\n    <!-- Format to use: <i class=\"material-icons\">add</i> -->\r\n\r\n</head>\r\n\r\n<body>\r\n\r\n    <!-- Speaker lookin Div -->\r\n    <div class=\"speaker1 bgBlack\">\r\n        <i style=\"margin-right: -2%;\" class=\"topSpk medium material-icons red-text\">blur_circular</i>\r\n        <i style=\"margin-right: -2%;\" class=\"botSpk medium material-icons red-text\">blur_circular</i>\r\n    </div>\r\n\r\n    <div class=\"container row bgBlack\">\r\n        <h1 class=\"center wf\">S<i style=\"margin-right: -2%;\" class=\"medium material-icons red-text\">blur_circular</i>\r\n            cket Tunes\r\n        </h1>\r\n\r\n        <div class=\"row box\">\r\n            <!-- Form to create a party -->\r\n            <div class=\"box width-45 left\">\r\n                <form (submit)=\"createParty()\">\r\n                    <div>\r\n                        <label for=\"\">Name your party:</label>\r\n                        <input type=\"text\" name=\"name\" [(ngModel)]=\"newPlaylist.room\">\r\n                    </div>\r\n                    <button class=\"btn red accent-4\">Create Party</button>\r\n                </form>\r\n            </div>\r\n\r\n            <!-- Form to join a party -->\r\n            <div class=\"box width-45 right\">\r\n                <form (submit)=\"joinParty()\">\r\n                    <div>\r\n                        <label for=\"\">Existing Party:</label>\r\n                        <input type=\"text\" name=\"name\" [(ngModel)]=\"playlist.room\">\r\n                    </div>\r\n                    <button class=\"btn red accent-4\">Join Party</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <!-- Speaker lookin Div -->\r\n    <div class=\"speaker2 bgBlack\">\r\n        <i style=\"margin-right: -2%;\" class=\" topSpk medium material-icons red-text\">blur_circular</i>\r\n        <i style=\"margin-right: -2%;\" class=\" botSpk medium material-icons red-text\">blur_circular</i>\r\n    </div>\r\n</body>\r\n\r\n</html>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>Welcome</title>\n    <!-- Compiled and minified CSS -->\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">\n\n    <!-- Compiled and minified JavaScript -->\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>\n\n    <!-- Icons -->\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <!-- Format to use: <i class=\"material-icons\">add</i> -->\n\n</head>\n\n<body>\n\n    <!-- Speaker lookin Div -->\n    <div class=\"speaker1 bgBlack\">\n        <i style=\"margin-right: -2%;\" class=\"topSpk medium material-icons red-text\">blur_circular</i>\n        <i style=\"margin-right: -2%;\" class=\"botSpk medium material-icons red-text\">blur_circular</i>\n    </div>\n\n    <div class=\"container row bgBlack\">\n        <h1 class=\"center wf\">S<i style=\"margin-right: -2%;\" class=\"medium material-icons red-text\">blur_circular</i>\n            cket Tunes\n        </h1>\n\n        <div class=\"row box\">\n            <!-- Form to create a party -->\n            <div class=\"box width-45 left\">\n                <form (submit)=\"createParty()\">\n                    <div>\n                        <label for=\"\">Name your party:</label>\n                        <input style = \"color: white\" type=\"text\" name=\"name\" [(ngModel)]=\"newPlaylist.room\">\n                    </div>\n                    <button class=\"btn red accent-4\">Create Party</button>\n                </form>\n            </div>\n\n            <!-- Form to join a party -->\n            <div class=\"box width-45 right\">\n                <form (submit)=\"joinParty()\">\n                    <div>\n                        <label for=\"\">Existing Party:</label>\n                        <input style = \"color: white\" type=\"text\" name=\"name\" [(ngModel)]=\"playlist.room\">\n                    </div>\n                    <button class=\"btn red accent-4\">Join Party</button>\n                </form>\n            </div>\n        </div>\n\n    </div>\n\n    <!-- Speaker lookin Div -->\n    <div class=\"speaker2 bgBlack\">\n        <i style=\"margin-right: -2%;\" class=\" topSpk medium material-icons red-text\">blur_circular</i>\n        <i style=\"margin-right: -2%;\" class=\" botSpk medium material-icons red-text\">blur_circular</i>\n    </div>\n</body>\n\n</html>");
 
 /***/ }),
 
@@ -356,7 +356,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -429,7 +429,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const config = { url: '192.168.0.146:3333', options: {} };
+const config = { url: '192.168.0.103:3333', options: {} };
 
 let gapiClientConfig = {
     client_id: "CLIENT_ID",
@@ -536,7 +536,7 @@ HttpService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".container {\r\n  text-align: center;\r\n}\r\n\r\n/******SPEAKER DECORATIONS**************************/\r\n\r\n.speaker-body {\r\n  min-height: 70vh;\r\n}\r\n\r\n.speaker-hole-1 {\r\n  width: 25vh;\r\n  height: 25vh;\r\n  border-radius: 50%;\r\n  background-color: white;\r\n}\r\n\r\n.speaker-hole-2 {\r\n  width: 13vh;\r\n  height: 13vh;\r\n  border-radius: 50%;\r\n  background-color: #DC3545;\r\n}\r\n\r\n/******SCREEN DECORATIONS**************************/\r\n\r\n.screen {\r\n  height: 50vh;\r\n  background-color: black;\r\n  border-radius: 1%;\r\n}\r\n\r\n/******SEARCH RESULTS**************************/\r\n\r\n.overflow-auto {\r\n  height: 650px;\r\n  overflow: scroll;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFydHkvcGFydHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQSxvREFBb0Q7O0FBQ3BEO0VBQ0UsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsdUJBQXVCO0FBQ3pCOztBQUVBO0VBQ0UsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIseUJBQXlCO0FBQzNCOztBQUVBLG1EQUFtRDs7QUFDbkQ7RUFDRSxZQUFZO0VBQ1osdUJBQXVCO0VBQ3ZCLGlCQUFpQjtBQUNuQjs7QUFFQSwrQ0FBK0M7O0FBQy9DO0VBQ0UsYUFBYTtFQUNiLGdCQUFnQjtBQUNsQiIsImZpbGUiOiJzcmMvYXBwL3BhcnR5L3BhcnR5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi8qKioqKipTUEVBS0VSIERFQ09SQVRJT05TKioqKioqKioqKioqKioqKioqKioqKioqKiovXHJcbi5zcGVha2VyLWJvZHkge1xyXG4gIG1pbi1oZWlnaHQ6IDcwdmg7XHJcbn1cclxuXHJcbi5zcGVha2VyLWhvbGUtMSB7XHJcbiAgd2lkdGg6IDI1dmg7XHJcbiAgaGVpZ2h0OiAyNXZoO1xyXG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxufVxyXG5cclxuLnNwZWFrZXItaG9sZS0yIHtcclxuICB3aWR0aDogMTN2aDtcclxuICBoZWlnaHQ6IDEzdmg7XHJcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNEQzM1NDU7XHJcbn1cclxuXHJcbi8qKioqKipTQ1JFRU4gREVDT1JBVElPTlMqKioqKioqKioqKioqKioqKioqKioqKioqKi9cclxuLnNjcmVlbiB7XHJcbiAgaGVpZ2h0OiA1MHZoO1xyXG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xyXG4gIGJvcmRlci1yYWRpdXM6IDElO1xyXG59XHJcblxyXG4vKioqKioqU0VBUkNIIFJFU1VMVFMqKioqKioqKioqKioqKioqKioqKioqKioqKi9cclxuLm92ZXJmbG93LWF1dG8ge1xyXG4gIGhlaWdodDogNjUwcHg7XHJcbiAgb3ZlcmZsb3c6IHNjcm9sbDtcclxufVxyXG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".container {\n  text-align: center;\n}\n\n/******SPEAKER DECORATIONS**************************/\n\n.speaker-body {\n  min-height: 70vh;\n}\n\n.speaker-hole-1 {\n  width: 25vh;\n  height: 25vh;\n  border-radius: 50%;\n  background-color: white;\n}\n\n.speaker-hole-2 {\n  width: 13vh;\n  height: 13vh;\n  border-radius: 50%;\n  background-color: #DC3545;\n}\n\n/******SCREEN DECORATIONS**************************/\n\n.screen {\n  height: 50vh;\n  background-color: black;\n  border-radius: 1%;\n}\n\n/******SEARCH RESULTS**************************/\n\n.overflow-auto {\n  height: 650px;\n  overflow: scroll;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFydHkvcGFydHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQSxvREFBb0Q7O0FBQ3BEO0VBQ0UsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsdUJBQXVCO0FBQ3pCOztBQUVBO0VBQ0UsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIseUJBQXlCO0FBQzNCOztBQUVBLG1EQUFtRDs7QUFDbkQ7RUFDRSxZQUFZO0VBQ1osdUJBQXVCO0VBQ3ZCLGlCQUFpQjtBQUNuQjs7QUFFQSwrQ0FBK0M7O0FBQy9DO0VBQ0UsYUFBYTtFQUNiLGdCQUFnQjtBQUNsQiIsImZpbGUiOiJzcmMvYXBwL3BhcnR5L3BhcnR5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4vKioqKioqU1BFQUtFUiBERUNPUkFUSU9OUyoqKioqKioqKioqKioqKioqKioqKioqKioqL1xuLnNwZWFrZXItYm9keSB7XG4gIG1pbi1oZWlnaHQ6IDcwdmg7XG59XG5cbi5zcGVha2VyLWhvbGUtMSB7XG4gIHdpZHRoOiAyNXZoO1xuICBoZWlnaHQ6IDI1dmg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5zcGVha2VyLWhvbGUtMiB7XG4gIHdpZHRoOiAxM3ZoO1xuICBoZWlnaHQ6IDEzdmg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0RDMzU0NTtcbn1cblxuLyoqKioqKlNDUkVFTiBERUNPUkFUSU9OUyoqKioqKioqKioqKioqKioqKioqKioqKioqL1xuLnNjcmVlbiB7XG4gIGhlaWdodDogNTB2aDtcbiAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XG4gIGJvcmRlci1yYWRpdXM6IDElO1xufVxuXG4vKioqKioqU0VBUkNIIFJFU1VMVFMqKioqKioqKioqKioqKioqKioqKioqKioqKi9cbi5vdmVyZmxvdy1hdXRvIHtcbiAgaGVpZ2h0OiA2NTBweDtcbiAgb3ZlcmZsb3c6IHNjcm9sbDtcbn1cbiJdfQ== */");
 
 /***/ }),
 
@@ -575,16 +575,18 @@ let PartyComponent = class PartyComponent {
         this.search = {
             query: ''
         };
+        this.allPlaylistSongs = [];
         this.weGotResults = false;
         this.searchResults = [];
         this.newSong = {
-            link: ""
+            link: "",
+            name: ""
         };
         this.SongId = null;
         this.playing = false;
         gapiService.onLoad().subscribe(() => {
             // Here we can use gapi
-            gapi['client'].setApiKey('API KEY');
+            gapi['client'].setApiKey('AIzaSyAStWnWGpBLHOiAJNM2KCwvME9yZmiY_SY');
         });
     }
     ngOnInit() {
@@ -603,35 +605,72 @@ let PartyComponent = class PartyComponent {
         });
     }
     onSubmit() {
-        // let arr = this.newSong.link.split(/[=&]+/);
+        // if there is a song playing 
+        // add the song the playlist songs[]
+        // send the server to emit to everyone
+        // in the room that a new song was added
+        // update the playlist in mongo with new song
+        let self = this;
+        // check if there is a song playing
         if (this.playing) {
-            this._httpService.createSong({
+            console.log("something is playing");
+            let nextUp = {
                 id: this.newSong.link,
-                likes: [],
-                postedBy: this.userId
-            })
-                .subscribe((data) => {
-                console.log("should be a playlist object: ", this.playlist);
-                this.playlist.songs.push(data);
-                console.log("should be a playlist object 2: ", this.playlist);
-                this._httpService.updatePlaylist(this.playlist)
-                    .subscribe((data) => {
-                    console.log(data);
-                });
-            });
-            this.newSong = {
-                link: ''
+                name: this.newSong.name,
+                likes: 0
             };
-            this._httpService.updatePlaylist(this.playlist)
-                .subscribe(playlist => console.log(playlist));
+            this.newSong = {
+                link: '',
+                name: ''
+            };
+            try {
+                console.log(self.playlist);
+                self.playlist.songs.push(nextUp);
+                this._socket.emit("updatePlaylist", this.playlist);
+                this._socket.on("updated", (data) => {
+                    this.playlist = data;
+                    console.log("new playlist", this.playlist);
+                });
+            }
+            catch (e) {
+                console.log(e);
+            }
+            if (nextUp.name != '') {
+                // this.allPlaylistSongs.push(nextUp);
+                self.allPlaylistSongs = this.playlist.songs;
+            }
+            // this will send the playlist to the server
+            // this._httpService.createSong({
+            //   id: this.newSong.link,
+            //   likes: [],
+            //   postedBy: this.userId
+            // })
+            //   .subscribe((data: any) => {
+            //     console.log("should be a playlist object: ", this.playlist);
+            //     this.playlist.songs.push(data);
+            //     console.log("should be a playlist object 2: ", this.playlist);
+            //     this._httpService.updatePlaylist(this.playlist)
+            //       .subscribe((data: any) => {
+            //         console.log(data)
+            //       });
+            //   })
+            // this.newSong = {
+            //   link: ''
+            // }
+            // this._httpService.updatePlaylist(this.playlist)
+            //   .subscribe(playlist => console.log(playlist));
         }
+        // if not play the song - dont append the playlist and play song
         else {
             this.SongId = this.newSong.link;
             this.playing = true;
             this.newSong = {
-                link: ''
+                link: '',
+                name: ''
             };
         }
+        //  clear the input field
+        //   set new song link to empty
     }
     makeRequest(q) {
         let self = this;
@@ -658,8 +697,9 @@ let PartyComponent = class PartyComponent {
                 let vidThumbimg = '<pre><img  id="' + item.id.videoId + '" name="' + item.snippet.title + '" src="' + vidThumburl + '" alt="No  Image Available." style="width:300px;height:240px"></pre>';
                 $(`#results${counter}`).append('<pre>' + '<p style = "color: white">' + vidTitle + '</p>' + vidThumbimg + '</pre>').on('click', function () {
                     console.log(vidTitle);
-                    $("#videoInput").val(item.id.videoId);
+                    $("#videoInput").val(item.snippet.title);
                     self.newSong.link = item.id.videoId;
+                    self.newSong.name = item.snippet.title;
                 });
                 counter += 1;
             });
@@ -692,6 +732,18 @@ let PartyComponent = class PartyComponent {
             });
         });
     }
+    playTheNextSong(currState) {
+        console.log("HERE");
+        if (currState == 0) {
+            if (this.allPlaylistSongs.length != 0) {
+                console.log(this.allPlaylistSongs[0].id);
+                this.SongId = null;
+                this.SongId = this.allPlaylistSongs[0].id;
+                this.playing = true;
+                this.allPlaylistSongs.shift();
+            }
+        }
+    }
 };
 PartyComponent.ctorParameters = () => [
     { type: _http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"] },
@@ -721,7 +773,7 @@ PartyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("@media only screen and (min-width: 768px) {\r\n\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGxheWVyL3BsYXllci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBIiwiZmlsZSI6InNyYy9hcHAvcGxheWVyL3BsYXllci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA3NjhweCkge1xyXG5cclxufVxyXG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("@media only screen and (min-width: 768px) {\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGxheWVyL3BsYXllci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBIiwiZmlsZSI6InNyYy9hcHAvcGxheWVyL3BsYXllci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA3NjhweCkge1xuXG59XG4iXX0= */");
 
 /***/ }),
 
@@ -762,12 +814,18 @@ let PlayerComponent = class PlayerComponent {
     constructor() {
         this.title = 'app';
         this.id = '';
+        this.playTheNextSong = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.autoPlay = "?autoplay=1";
         this.videoString = "https://www.youtube.com/embed/";
     }
     onStateChange(event) {
         this.ytEvent = event.data;
-        console.log("song is over");
+        if (event.data == 0) {
+            console.log("OVER");
+            this.currState = event.data;
+            this.playTheNextSong.emit(this.currState);
+        }
+        this.currState = 1;
     }
     savePlayer(player) {
         this.player = player;
@@ -781,6 +839,9 @@ let PlayerComponent = class PlayerComponent {
     ngOnInit() {
     }
 };
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+], PlayerComponent.prototype, "playTheNextSong", void 0);
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
 ], PlayerComponent.prototype, "videoID", void 0);
@@ -805,7 +866,7 @@ PlayerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".box {\r\n    /* outline: 2px solid blue; */\r\n    padding: 2%;\r\n  }\r\n\r\n.mid {\r\n      vertical-align: middle;\r\n  }\r\n\r\ni.material-icons , i.material-icons + span {\r\n    vertical-align: middle;\r\n}\r\n\r\n.width-45 {\r\n    width: 45%;\r\n}\r\n\r\n.middle {\r\n  margin: 0 auto;\r\n}\r\n\r\n.bgBlack {\r\n  background-color: black;\r\n}\r\n\r\n.bgWhite {\r\n  background-color: white;\r\n}\r\n\r\n.red {\r\n  background-color: #d50000; \r\n}\r\n\r\n.wf {\r\n  color: white;\r\n}\r\n\r\n.speaker1 {\r\n  position: absolute;\r\n  left: 2%;\r\n  height: 25%;\r\n  top: 20%;\r\n  outline: 2px solid black;\r\n  width: 5%;\r\n}\r\n\r\n.speaker2 {\r\n  position: absolute;\r\n  left: 93%;\r\n  height: 25%;\r\n  top: 20%;\r\n  outline: 2px solid black;\r\n  width: 5%;\r\n}\r\n\r\n.topSpk {\r\n  position: relative;\r\n  top: 12%;\r\n  left: 5%;\r\n}\r\n\r\n.botSpk {\r\n  position: relative;\r\n  left: 5%;\r\n  top: 24%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvd2VsY29tZS93ZWxjb21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw2QkFBNkI7SUFDN0IsV0FBVztFQUNiOztBQUVGO01BQ00sc0JBQXNCO0VBQzFCOztBQUVGO0lBQ0ksc0JBQXNCO0FBQzFCOztBQUVBO0lBQ0ksVUFBVTtBQUNkOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixRQUFRO0VBQ1IsV0FBVztFQUNYLFFBQVE7RUFDUix3QkFBd0I7RUFDeEIsU0FBUztBQUNYOztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLFNBQVM7RUFDVCxXQUFXO0VBQ1gsUUFBUTtFQUNSLHdCQUF3QjtFQUN4QixTQUFTO0FBQ1g7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsUUFBUTtFQUNSLFFBQVE7QUFDVjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixRQUFRO0VBQ1IsUUFBUTtBQUNWIiwiZmlsZSI6InNyYy9hcHAvd2VsY29tZS93ZWxjb21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYm94IHtcclxuICAgIC8qIG91dGxpbmU6IDJweCBzb2xpZCBibHVlOyAqL1xyXG4gICAgcGFkZGluZzogMiU7XHJcbiAgfVxyXG5cclxuLm1pZCB7XHJcbiAgICAgIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XHJcbiAgfVxyXG4gIFxyXG5pLm1hdGVyaWFsLWljb25zICwgaS5tYXRlcmlhbC1pY29ucyArIHNwYW4ge1xyXG4gICAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcclxufVxyXG5cclxuLndpZHRoLTQ1IHtcclxuICAgIHdpZHRoOiA0NSU7XHJcbn1cclxuXHJcbi5taWRkbGUge1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG59XHJcblxyXG4uYmdCbGFjayB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbi5iZ1doaXRlIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxufVxyXG5cclxuLnJlZCB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2Q1MDAwMDsgXHJcbn1cclxuXHJcbi53ZiB7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4uc3BlYWtlcjEge1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICBsZWZ0OiAyJTtcclxuICBoZWlnaHQ6IDI1JTtcclxuICB0b3A6IDIwJTtcclxuICBvdXRsaW5lOiAycHggc29saWQgYmxhY2s7XHJcbiAgd2lkdGg6IDUlO1xyXG59XHJcblxyXG4uc3BlYWtlcjIge1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICBsZWZ0OiA5MyU7XHJcbiAgaGVpZ2h0OiAyNSU7XHJcbiAgdG9wOiAyMCU7XHJcbiAgb3V0bGluZTogMnB4IHNvbGlkIGJsYWNrO1xyXG4gIHdpZHRoOiA1JTtcclxufVxyXG5cclxuLnRvcFNwayB7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHRvcDogMTIlO1xyXG4gIGxlZnQ6IDUlO1xyXG59XHJcblxyXG4uYm90U3BrIHtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgbGVmdDogNSU7XHJcbiAgdG9wOiAyNCU7XHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".box {\n    /* outline: 2px solid blue; */\n    padding: 2%;\n  }\n\n.mid {\n      vertical-align: middle;\n  }\n\ni.material-icons , i.material-icons + span {\n    vertical-align: middle;\n}\n\n.width-45 {\n    width: 45%;\n}\n\n.middle {\n  margin: 0 auto;\n}\n\n.bgBlack {\n  background-color: black;\n}\n\n.bgWhite {\n  background-color: white;\n}\n\n.red {\n  background-color: #d50000; \n}\n\n.wf {\n  color: white;\n}\n\n.speaker1 {\n  position: absolute;\n  left: 2%;\n  height: 25%;\n  top: 20%;\n  outline: 2px solid black;\n  width: 5%;\n}\n\n.speaker2 {\n  position: absolute;\n  left: 93%;\n  height: 25%;\n  top: 20%;\n  outline: 2px solid black;\n  width: 5%;\n}\n\n.topSpk {\n  position: relative;\n  top: 12%;\n  left: 5%;\n}\n\n.botSpk {\n  position: relative;\n  left: 5%;\n  top: 24%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvd2VsY29tZS93ZWxjb21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw2QkFBNkI7SUFDN0IsV0FBVztFQUNiOztBQUVGO01BQ00sc0JBQXNCO0VBQzFCOztBQUVGO0lBQ0ksc0JBQXNCO0FBQzFCOztBQUVBO0lBQ0ksVUFBVTtBQUNkOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixRQUFRO0VBQ1IsV0FBVztFQUNYLFFBQVE7RUFDUix3QkFBd0I7RUFDeEIsU0FBUztBQUNYOztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLFNBQVM7RUFDVCxXQUFXO0VBQ1gsUUFBUTtFQUNSLHdCQUF3QjtFQUN4QixTQUFTO0FBQ1g7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsUUFBUTtFQUNSLFFBQVE7QUFDVjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixRQUFRO0VBQ1IsUUFBUTtBQUNWIiwiZmlsZSI6InNyYy9hcHAvd2VsY29tZS93ZWxjb21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYm94IHtcbiAgICAvKiBvdXRsaW5lOiAycHggc29saWQgYmx1ZTsgKi9cbiAgICBwYWRkaW5nOiAyJTtcbiAgfVxuXG4ubWlkIHtcbiAgICAgIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG4gIH1cbiAgXG5pLm1hdGVyaWFsLWljb25zICwgaS5tYXRlcmlhbC1pY29ucyArIHNwYW4ge1xuICAgIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG59XG5cbi53aWR0aC00NSB7XG4gICAgd2lkdGg6IDQ1JTtcbn1cblxuLm1pZGRsZSB7XG4gIG1hcmdpbjogMCBhdXRvO1xufVxuXG4uYmdCbGFjayB7XG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xufVxuXG4uYmdXaGl0ZSB7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xufVxuXG4ucmVkIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2Q1MDAwMDsgXG59XG5cbi53ZiB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuLnNwZWFrZXIxIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiAyJTtcbiAgaGVpZ2h0OiAyNSU7XG4gIHRvcDogMjAlO1xuICBvdXRsaW5lOiAycHggc29saWQgYmxhY2s7XG4gIHdpZHRoOiA1JTtcbn1cblxuLnNwZWFrZXIyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiA5MyU7XG4gIGhlaWdodDogMjUlO1xuICB0b3A6IDIwJTtcbiAgb3V0bGluZTogMnB4IHNvbGlkIGJsYWNrO1xuICB3aWR0aDogNSU7XG59XG5cbi50b3BTcGsge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRvcDogMTIlO1xuICBsZWZ0OiA1JTtcbn1cblxuLmJvdFNwayB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgbGVmdDogNSU7XG4gIHRvcDogMjQlO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -960,7 +1021,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\hljr2\Documents\dojo\mean_stack\socketTuneMe\SocketTuneMe\public\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/jameydogom/Desktop/SocketTuneMe/public/src/main.ts */"./src/main.ts");
 
 
 /***/ }),

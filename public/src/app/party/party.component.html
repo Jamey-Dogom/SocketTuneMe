@@ -77,7 +77,8 @@
           <p *ngIf="userIP" >{{ userIP }}</p>
           <h2><span style="color: #DC3545">Socket</span>Tunez</h2>
           <!--  music player component --------------------------------------------------------------------->
-          <div class="screen"><app-player *ngIf="SongId" [videoID]="SongId"></app-player></div>
+          <h1>{{SongId}}</h1>
+          <div class="screen"><app-player (playTheNextSong)="playTheNextSong($event)" *ngIf="SongId" [videoID]="SongId"></app-player></div>
           <div class="insert">
             <h3>Insert that next 🔥 track</h3>
             <!--  form for song submission -->
@@ -106,7 +107,15 @@
               <div class="input-group">
                 
                 <div class="input-group-append">
-                  
+                  <div class="card" style="width: 33rem; font-size: 14px">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item" *ngFor="let song of allPlaylistSongs">
+                        {{song.name}}
+
+                      </li>
+                    
+                    </ul>
+                  </div>
                 </div>
               </div>
    

@@ -30,10 +30,19 @@ export class PlayerComponent implements OnInit {
   id = '';
   private player;
   private ytEvent;
+  @Output() playTheNextSong = new EventEmitter();
+  currState: any;
+
 
   onStateChange(event) {
     this.ytEvent = event.data;
-    console.log("song is over")
+    if(event.data == 0){
+      console.log("OVER");
+      this.currState = event.data
+      this.playTheNextSong.emit(this.currState);
+    }
+    this.currState = 1
+   
   }
   savePlayer(player) {
     this.player = player;
