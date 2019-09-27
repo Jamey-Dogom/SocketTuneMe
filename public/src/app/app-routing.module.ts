@@ -7,7 +7,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   {
-    path: 'partyroom',
+    path: 'partyroom/:room',
     component: PartyComponent
   },
   {

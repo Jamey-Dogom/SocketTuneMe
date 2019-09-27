@@ -14,7 +14,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { PartyComponent } from './party/party.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HttpService } from './http.service';
-const config: SocketIoConfig = { url: '192.168.0.103:3333', options: {} };
+const config: SocketIoConfig = { url: '192.168.0.146:3333', options: {} };
 
 import {
   GoogleApiModule, 
@@ -23,7 +23,7 @@ import {
   NgGapiClientConfig, 
   NG_GAPI_CONFIG,
   GoogleApiConfig
-} from "ng-gapi";
+}  from "ng-gapi";
 
 let gapiClientConfig: NgGapiClientConfig = {
   client_id: "CLIENT_ID",
