@@ -31,28 +31,18 @@
             cket Tunes
         </h1>
 
-        <div class="row box">
+        <div class="row box col s8 push-s4" >
             <!-- Form to create a party -->
             <div class="box width-45 left">
-                <form (submit)="createParty()">
+                <form (submit)="createParty()" class="center">
                     <div>
-                        <label for="">Name your party:</label>
-                        <input style = "color: white" type="text" name="name" [(ngModel)]="newPlaylist.room">
-                    </div>
-                    <button class="btn red accent-4">Create Party</button>
-                </form>
-            </div>
-
-            <!-- Form to join a party -->
-            <div class="box width-45 right">
-                <form (submit)="joinParty()">
-                    <div>
-                        <label for="">Existing Party:</label>
+                        <label for="">Party Name:</label>
                         <input style = "color: white" type="text" name="name" [(ngModel)]="playlist.room">
                     </div>
                     <button class="btn red accent-4">Join Party</button>
                 </form>
             </div>
+
         </div>
 
     </div>

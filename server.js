@@ -19,14 +19,16 @@ const server = app.listen(3333, () => console.log('music bumping on 3333'));
 const io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
-    let PL = null;
 
-    // Join the Socket Room
-    socket.emit("log", { msg: "Here is the ID: ", id: socket.id })
+    socket.on("roomName", (data) => {
+        socket.join(data.room);
+        console.log("Room Name: ", data.room);
+    })
 
     // catch greeting to room
     socket.on("greetRoom", (data) => {
-        io.in(this.PL.room).emit("Greeting", data);
+        console.log("Greeting: ",data)
+        socket.to(data.room).emit("Greeting", data.msg);
     })
 
     // Save the playlist object in PL Variable
@@ -37,7 +39,7 @@ io.on('connection', function (socket) {
 
     // Giving socket ID to party component
     socket.on("SendID", () => {
-        socket.emit("hereBro", { id: socket.id, playlist:  PL });
+        socket.emit("hereBro", { id: socket.id, playlist: PL });
     });
 
     // Recieve updated playlist from client
@@ -46,8 +48,17 @@ io.on('connection', function (socket) {
         this.PL = data;
         io.in(this.PL.room).emit("updated", this.PL);
     })
-    
 
+    // Sends Song to room to add to playlist 
+    socket.on("nextSong", data => {
+        console.log("Next Song: ", data);
+        socket.to(data.room).emit("newSong", { song: data.song });
+    })
+
+    // Send sond ID to everyon to set ther current songID
+    socket.on("playThis", data => {
+        socket.to(data.room).emit("setSongId", {songId: data.songLink});
+    })
 
 
     // Gets the ipV6

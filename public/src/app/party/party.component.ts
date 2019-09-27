@@ -19,11 +19,11 @@ export class PartyComponent implements OnInit {
     query: ''
   }
 
-  allPlaylistSongs = []
+  allPlaylistSongs = [];
 
   weGotResults = false;
 
-  searchResults = []
+  searchResults = [];
 
   gapi: any;
 
@@ -36,6 +36,7 @@ export class PartyComponent implements OnInit {
   // UserId is the Sockets ID
   userId;
   playing = false;
+  roomName;
 
   constructor(
     private _httpService: HttpService,
@@ -47,22 +48,34 @@ export class PartyComponent implements OnInit {
     gapiService.onLoad().subscribe(() => {
       // Here we can use gapi
 
-      gapi['client'].setApiKey();
+      gapi['client'].setApiKey('AIzaSyAStWnWGpBLHOiAJNM2KCwvME9yZmiY_SY');
     });
   }
 
   ngOnInit() {
-    // Grab User ID and Playlist from server
-    this._socket.emit("SendID");
-    this._socket.on("hereBro", (data) => {
-      this.userId = data.id;
-      this.playlist = data.playlist;
-      console.log("Getting ID and Playlist",data);
+    this._route.params
+      .subscribe((params: Params) => {
+        this.roomName = params.room;
+        this._socket.emit("roomName", { room: params.room })
+      });
+    // send room name to server
+    // Add new song to playlist upon recieving from server 
+    this._socket.on("newSong", (data) => {
+      console.log("NewSong: ", data);
+      this.allPlaylistSongs.push(data.song);
+    });
+
+    // Recieve first song from server
+    this._socket.on("setSongId", data => {
+      this.SongId = data.songId;
+      console.log("First song Id", data.songId);
     })
   }
 
-  greetRoom(){
-    this._socket.emit("greetRoom", { msg: "Hello everyone" });
+
+
+  greetRoom() {
+    this._socket.emit("greetRoom", { msg: "Hello everyone", room: this.roomName });
     this._socket.on("Greeting", (data) => {
       console.log(data);
     })
@@ -77,42 +90,43 @@ export class PartyComponent implements OnInit {
 
     // update the playlist in mongo with new song
     let self = this
-  
 
-      // check if there is a song playing
+
+    // check if there is a song playing
     if (this.playing) {
       console.log("something is playing")
       let nextUp = {
-        id : this.newSong.link,
-        name : this.newSong.name,
-        likes : 0
+        id: this.newSong.link,
+        name: this.newSong.name,
+        likes: 0
       }
       this.newSong = {
         link: '',
-        name : ''
+        name: ''
       }
-      if(nextUp.name != ''){
+      if (nextUp.name != '') {
         this.allPlaylistSongs.push(nextUp);
       }
-     
 
-      try{
+
+      try {
         console.log(self.playlist)
+        // Sending song back to server to emit to room
+        this._socket.emit("nextSong", { song: nextUp, room: this.roomName });
         self.playlist.songs.push(nextUp);
-        this._socket.emit("updatePlaylist", this.playlist);
-        this._socket.on("updated", (data : any) => {
+        this._socket.on("updated", (data: any) => {
           this.playlist = data;
           console.log("new playlist", this.playlist)
 
         });
       }
-      catch(e) {
-          console.log(e)
+      catch (e) {
+        console.log(e)
       }
-      
 
-        // this will send the playlist to the server
-     
+
+      // this will send the playlist to the server
+
 
       // this._httpService.createSong({
       //   id: this.newSong.link,
@@ -133,19 +147,21 @@ export class PartyComponent implements OnInit {
       // }
       // this._httpService.updatePlaylist(this.playlist)
       //   .subscribe(playlist => console.log(playlist));
-    } 
-     // if not play the song - dont append the playlist and play song
+    }
+    // if not play the song - dont append the playlist and play song
     else {
       this.SongId = this.newSong.link;
       this.playing = true;
+      // Send the song to the server to tell everyone in the room to play it
+      this._socket.emit("playThis", { songLink: this.newSong.link, room: this.roomName });
       this.newSong = {
         link: '',
-        name : ''
+        name: ''
       }
     }
-  //  clear the input field
+    //  clear the input field
 
-  //   set new song link to empty
+    //   set new song link to empty
   }
 
   makeRequest(q) {
@@ -218,11 +234,11 @@ export class PartyComponent implements OnInit {
 
   }
 
-  playTheNextSong(currState){
+  playTheNextSong(currState) {
     console.log("HERE")
     this.SongId = null;
-    if(currState== 0){
-      if(this.allPlaylistSongs.length != 0){
+    if (currState == 0) {
+      if (this.allPlaylistSongs.length != 0) {
         console.log(this.allPlaylistSongs[0].id)
         this.SongId = this.allPlaylistSongs[0].id
         this.playing = true;
