@@ -46,7 +46,8 @@ export class PartyComponent implements OnInit {
   ) {
     gapiService.onLoad().subscribe(() => {
       // Here we can use gapi
-      gapi['client'].setApiKey('AIzaSyDiHCKuqXBvB4rJBIIhP6GMr55A7o3Fj-8');
+
+      gapi['client'].setApiKey();
     });
   }
 
