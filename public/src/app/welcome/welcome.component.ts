@@ -44,17 +44,6 @@ export class WelcomeComponent implements OnInit {
 
   }
 
-  // Join Party
-  joinParty() {
-    this._httpService.getPlaylist(this.playlist.room)
-      .subscribe((data: any) => {
-        // Once the data is recieved from the db, is sent to server to be stored
-        this._socket.emit("NewPlaylist", data.playlist[0]);
-        // console.log("Clean: ",data.playlist[0]);
-        this._router.navigate(["/partyroom"]);
-      })
-  }
-
   // Save ID for user
   grabID() {
     this._socket.on("log", (data) => {
