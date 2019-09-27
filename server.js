@@ -39,12 +39,11 @@ io.on('connection', function (socket) {
     socket.on("SendID", () => {
         socket.emit("hereBro", { id: socket.id, playlist:  PL });
     });
-    let self = this
+
     // Recieve updated playlist from client
     socket.on("updatePlaylist", (data) => {
-        
         console.log("Should be updated Playlist: ", data);
-        self.PL = data;
+        this.PL = data;
         io.in(this.PL.room).emit("updated", this.PL);
     })
     
