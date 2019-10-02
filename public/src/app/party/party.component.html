@@ -73,10 +73,10 @@
       </div>
       <div class="col-6">
         <div class="container">
-          <p *ngIf="userIP" >{{ userIP }}</p>
+          <!-- <p *ngIf="userIP" >{{ userIP }}</p> -->
           <h2><span style="color: #DC3545">Socket</span>Tunez</h2>
           <!--  music player component --------------------------------------------------------------------->
-          <h1>{{SongId}}</h1>
+          <!-- <h1>{{SongId}}</h1> -->
           <div class="screen"><app-player (playTheNextSong)="playTheNextSong($event)" *ngIf="SongId" [videoID]="SongId"></app-player></div>
           <div class="insert">
             <h3>Insert that next 🔥 track</h3>

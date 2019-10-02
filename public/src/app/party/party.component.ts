@@ -48,7 +48,8 @@ export class PartyComponent implements OnInit {
     gapiService.onLoad().subscribe(() => {
       // Here we can use gapi
 
-      gapi['client'].setApiKey('AIzaSyAStWnWGpBLHOiAJNM2KCwvME9yZmiY_SY');
+      gapi['client'].setApiKey(
+        'AIzaSyAStWnWGpBLHOiAJNM2KCwvME9yZmiY_SY');
     });
   }
 
@@ -106,13 +107,14 @@ export class PartyComponent implements OnInit {
       }
       if (nextUp.name != '') {
         this.allPlaylistSongs.push(nextUp);
+        // Sending song back to server to emit to room
+        this._socket.emit("nextSong", { song: nextUp, room: this.roomName });
       }
 
 
       try {
         console.log(self.playlist)
-        // Sending song back to server to emit to room
-        this._socket.emit("nextSong", { song: nextUp, room: this.roomName });
+
         self.playlist.songs.push(nextUp);
         this._socket.on("updated", (data: any) => {
           this.playlist = data;
