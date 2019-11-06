@@ -18,7 +18,7 @@
     "@ryancavanaugh/gapi.youtube": "^3.0.14-alpha",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
-    "mongoose": "^5.7.1",
+    "mongoose": "^5.7.5",
     "ng-gapi": "0.0.73",
     "ngx-socket-io": "^3.0.1",
     "ngx-youtube-player": "^7.1.1",
