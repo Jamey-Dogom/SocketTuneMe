@@ -22,6 +22,6 @@
     "ng-gapi": "0.0.73",
     "ngx-socket-io": "^3.0.1",
     "ngx-youtube-player": "^7.1.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.5.0"
   }
 }
